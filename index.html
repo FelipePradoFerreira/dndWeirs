@@ -3,25 +3,92 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title> Weirs - Conteúdo do Jogador </title>
+    <title>D&D Homebrew - Biblioteca</title>
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
     <header>
-        <h1>Header Teste</h1>
+        <div class="container">
+            <h1> Biblioteca D&D Weirs </h1>
+            <p>Explore as criações personalizadas do universo Weirs</p>
+        </div>
     </header>
     
-    <main>
-        <section id="classes">
-            <h2>Classes Customizadas</h2>
-            <div id="lista-classes"></div>
-        </section>
-        
-        <section id="racas">
-            <h2>Raças Personalizadas</h2>
-            <div id="lista-racas"></div>
+    <main class="container">
+        <section class="menu-grid">
+            <!-- Card Raças -->
+            <a href="racas.html" class="card">
+                <div class="card-image">
+                    <img src="https://via.placeholder.com/300x200/4a5568/ffffff?text=🏔️" alt="Raças" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>Raças</h3>
+                    <p>Descubra raças personalizadas para seus personagens</p>
+                </div>
+            </a>
+            
+            <!-- Card Classes -->
+            <a href="classes.html" class="card">
+                <div class="card-image">
+                    <img src="https://via.placeholder.com/300x200/2d3748/ffffff?text=⚔️" alt="Classes" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>Classes</h3>
+                    <p>Explore classes customizadas únicas</p>
+                </div>
+            </a>
+            
+            <!-- Card Antecedentes -->
+            <a href="antecedentes.html" class="card">
+                <div class="card-image">
+                    <img src="https://via.placeholder.com/300x200/805ad5/ffffff?text=📖" alt="Antecedentes" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>Antecedentes</h3>
+                    <p>Histórias de origem especiais para seus heróis</p>
+                </div>
+            </a>
+            
+            <!-- Card Talentos -->
+            <a href="talentos.html" class="card">
+                <div class="card-image">
+                    <img src="https://via.placeholder.com/300x200/38a169/ffffff?text=✨" alt="Talentos" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>Talentos</h3>
+                    <p>Habilidades e feitos personalizados</p>
+                </div>
+            </a>
+            
+            <!-- Exemplo de card adicional (para demonstrar o comportamento responsivo) -->
+            <a href="magias.html" class="card">
+                <div class="card-image">
+                    <img src="https://via.placeholder.com/300x200/d53f8c/ffffff?text=🔮" alt="Magias" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>Magias</h3>
+                    <p>Feitiços e invocações personalizadas</p>
+                </div>
+            </a>
+            
+            <!-- Outro card exemplo -->
+            <a href="itens.html" class="card">
+                <div class="card-image">
+                    <img src="https://via.placeholder.com/300x200/dd6b20/ffffff?text=🛡️" alt="Itens" class="card-img">
+                </div>
+                <div class="card-content">
+                    <h3>Itens Mágicos</h3>
+                    <p>Artefatos e equipamentos especiais</p>
+                </div>
+            </a>
         </section>
     </main>
+
+    <footer>
+        <div class="container">
+            <p>© 2024 D&D Homebrew - Projeto em Desenvolvimento</p>
+        </div>
+    </footer>
 
     <script src="script.js"></script>
 </body>
