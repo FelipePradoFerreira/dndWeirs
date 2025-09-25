@@ -1,6 +1,46 @@
-# dndWeirs
-Branch Main
-0.1.0 - Teste inicial de página, style e script.
-0.2.0 - Novo Index e criação da página Raças.
-0.2.1 - Definição das demais páginas e teste de placeholder nas cards do index.
-0.2.2 - Tentativa de correção do card.
+# 🏰 Biblioteca Homebrew Weirs (D&D 5e)
+
+[![GitHub Pages](https://img.shields.io/badge/GitHub-Pages-brightgreen)](https://FelipePradoFerreira.github.io/dndWeirs)
+
+Uma aplicação web para organizar e exibir conteúdo homebrew de Dungeons & Dragons criados por mim e por meus amigos.
+
+## 📋 Changelog
+
+### Versão 0.4.0 (Atual)
+- **Data:**25/09/2025
+- **Melhorias:**
+  - Implementação do sistema de raças
+  - Adição do estilo específico da página raças
+  - Adição dos scripts específicos da página raças
+
+### Versão 0.3.0
+- **Data:**25/09/2025
+- **Melhorias:**
+  - Atualização completa dos estilos CSS
+  - Implementação do sistema de cards
+  - Layout responsivo aprimorado
+
+### Versão 0.2.0
+- **Data:** 25/09/2025
+- **Novidades:**
+  - Adição das páginas individuais
+  - Sistema de navegação entre páginas
+  - Estrutura básica de conteúdo
+
+### Versão 0.1.0
+- **Data:** 25/09/2025
+- **Lançamento Inicial:**
+  - Criação da estrutura base
+  - Configuração do GitHub Pages
+  - HTML/CSS/JS inicial
+
+## 🛠️ Tecnologias
+
+- HTML5
+- CSS3
+- JavaScript
+- GitHub Pages
+
+## 📝 Licença
+
+Este projeto está sob a licença MIT.
