@@ -47,7 +47,7 @@ header p {
     padding: 2rem 0;
 }
 
-/* Cards individuais - Agora com largura fixa */
+/* Cards individuais - Tamanho FIXO */
 .card {
     background: white;
     border-radius: 12px;
@@ -57,8 +57,9 @@ header p {
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
     display: block;
-    width: 250px; /* Largura fixa para os cards */
-    min-height: 320px; /* Altura mínima consistente */
+    width: 280px; /* Largura FIXA */
+    height: 350px; /* Altura FIXA - não muda mais */
+    flex-shrink: 0; /* Impede que o card encolha */
 }
 
 .card:hover {
@@ -66,25 +67,37 @@ header p {
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.2);
 }
 
+/* Container da imagem com tamanho FIXO */
 .card-image {
-    height: 150px; /* Altura fixa para as imagens */
+    width: 100%;
+    height: 160px; /* Altura FIXA para a imagem */
     overflow: hidden;
     border-bottom: 3px solid #4a5568;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: #f7fafc; /* Cor de fundo caso a imagem seja pequena */
 }
 
+/* Imagem com tamanho controlado */
 .card-img {
     width: 100%;
     height: 100%;
-    object-fit: cover;
+    object-fit: cover; /* Corta a imagem para preencher o espaço sem distorcer */
+    object-position: center; /* Foca no centro da imagem */
     transition: transform 0.3s ease;
 }
 
 .card:hover .card-img {
-    transform: scale(1.1);
+    transform: scale(1.05);
 }
 
 .card-content {
-    padding: 1.5rem;
+    padding: 1.2rem;
+    height: 190px; /* Altura FIXA para o conteúdo */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
     text-align: center;
 }
 
@@ -98,6 +111,7 @@ header p {
     color: #718096;
     font-size: 0.9rem;
     line-height: 1.4;
+    overflow: hidden; /* Garante que texto longo não vaze */
 }
 
 /* Footer */
@@ -122,7 +136,16 @@ footer {
     }
     
     .card {
-        width: 220px; /* Cards um pouco menores em tablets */
+        width: 250px; /* Cards um pouco menores em tablets */
+        height: 320px;
+    }
+    
+    .card-image {
+        height: 140px;
+    }
+    
+    .card-content {
+        height: 180px;
     }
     
     header h1 {
@@ -139,6 +162,7 @@ footer {
     .card {
         width: 100%;
         max-width: 300px;
+        height: 340px;
     }
     
     header h1 {
