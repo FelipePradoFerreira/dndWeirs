@@ -6,7 +6,12 @@ Uma aplicação web para organizar e exibir conteúdo homebrew de Dungeons & Dra
 
 ## 📋 Changelog
 
-### Versão 0.4.0 (Atual)
+### Versão 0.4.1 (Atual)
+- **Data:**25/09/2025
+- **Melhorias:**
+  - Correção breve da indexação dos cards da página inicial
+
+### Versão 0.4.0
 - **Data:**25/09/2025
 - **Melhorias:**
   - Implementação do sistema de raças
