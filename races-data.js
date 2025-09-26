@@ -2,32 +2,47 @@
 const racasData = [
     {
         id: 1,
-        nome: "Draconato Lunar",
+        nome: "Humano",
         imagemCard: "https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg",
         imagemWide: "https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg",
-        descricao: "Descendentes de dragões que habitaram as luas de um mundo distante, os Draconatos Lunares possuem escamas que brilham com a luz do astro noturno e uma conexão innate com a magia arcana.",
+        descricao: "Os humanos se espalharam por todos os continentes. Ao longo de séculos de adaptação aos diversos biomas, povos diferentes desenvolveram culturas únicas. Hoje os humanos ainda representam a grande maioria da população.",
         caracteristicas: {
-            tipo: "Humanoide (draconato)",
-            idade: "Amadurecem aos 15 anos e vivem até 80 anos",
-            tamanho: "Médio (1,80m - 2,20m)",
+            tipo: "Humanoide",
+            idade: "Humanos atingem a maioridade aos 18 anos e podem viver até cerca de um século.",
+            tamanho: "Médio (1,50m - 1,80m)",
             velocidade: "9m (30ft)",
-            linguagem: "Comum e Draconico"
+            linguagem: "Comum e dois a sua escolha"
         },
-        incrementoHabilidade: "+2 Carisma, +1 Força",
-        tracos: [
-            {
-                nome: "Resistência Lunar",
-                descricao: "Você tem resistência a dano de frio e vantagem em testes de resistência contra efeitos que causem sono."
-            },
-            {
-                nome: "Sopro da Lua",
-                descricao: "Uma vez por descanso, você pode exalar um sopro de energia lunar num cone de 4,5m. Criaturas na área devem fazer um teste de resistência de Destreza, sofrendo 2d6 de dano de frio em falha ou metade em sucesso."
-            },
-            {
-                nome: "Visão no Escuro",
-                descricao: "Você enxerga 18m na penumbra como se fosse luz forte e na escuridão como se fosse penumbra."
+        Humano Tradicional: {
+            incrementoHabilidade: "Escolha entre aumentar três atributos em um ponto ou aumentar um atributo em dois pontos e outro em um.",
+            tracos: [{
+                nome: "Curiosidade Humana",
+                descricao: "Os humanos de Weirs tem culturas diferentes que moldam seus talentos e habilidades desde o nascimento. Escolha um talento e uma perícia relacionados ao seu local de nascimento."
             }
-        ]
+            ]
+        Tyinen: {
+            descrição: "Após a recente descoberta e implementação dos Cristais Arcanos no dia-a-dia do continente, foi descoberto que esse recurso mágico valioso produz efeitos inusitados no corpo de humanos que ficam em contato com o composto. Na maior parte dos casos o triste fim é o envenenamento arcano que leva a sequelas físicas severas e em alguns casos até a morte. Alguns humanos conseguem sobreviver ao envenenamento arcano e estes podem desenvolver habilidades sobrehumanas depois do contato.",
+            incrementoHabilidade: "Escolha dois atributos e aumente cada um em dois pontos.",
+            tracos: [{
+                nome: "Fagulha Arcana",
+                descricao: "Apesar de ter sobrevivido ao envenenamento arcano essa experiência mudou a sua fisiologia de uma forma irreversível. Você tem acesso a uma Fagulha Arcana, uma habilidade de raça única causada pela influência dos Cristais Arcanos no seu corpo. Os poderes e habilidades adquiridos através de fagulha arcana são variados, combine com o seu mestre uma habilidade que ele julgue ser balanceada e adequada."
+                nome: "Persona Non Grata",
+                descricao: "A existência dos Tyinens é um fenômeno recente e ainda encarado com resistência pela maioria das nações do continente. A conduta varia de acordo com o território, desde atitudes mais radicais como o aprisionamento em campos de concentração que ocorre com os mutantes encontrados em Arindel, até a livre circulação como acontece no Reino Comunal das Quatro Espécies."
+            }
+            ]
+        Escamados: {
+            descrição: "Humanos marcados de forma irreversível por um poder celestial ou abissal.",
+            incrementoHabilidade: "Escolha entre aumentar três atributos em um ponto ou aumentar um atributo em dois pontos e outro em um.",
+            tracos: [{
+                nome: "Corpo Marcado",
+                descricao: "Sua forma física foi alterada de forma que remeta a entidade que maculou seu corpo. Você ganha um dos seguintes traços: Anfíbio, Ágil(nimble), Tática de Matilha ou Ancestral Feérico."
+                nome: "Malidção",
+                descricao: "Você pode entrar em acordo com sua nova realidade e usar sua maldição para sua vantagem. Como já está amaldiçoado, você se torna imune a novos efeitos de maldição."
+                nome: "Conhecimento Proibido",
+                descricao: "Estar ligado a forças ancestrais te dá acesso ao saber que não é acessível por todos. Escolha 2 perícias em que não tenha proficiência para adquirir. Adicionalmente, escolha uma perícia em que já tenha proficiência para adquirir especialização."
+            }
+            ]
+        }    
     },
     {
         id: 2,
