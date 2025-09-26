@@ -5,7 +5,7 @@
 Uma aplicação web para organizar e exibir conteúdo homebrew de Dungeons & Dragons criados por mim e por meus amigos.
 
 ## 📋 Changelog
-Bunda cu pinto putinhas
+Bunda cu pinto putinhas 
 
 ### Versão 0.4.3 (Atual)
 - **Data:**25/09/2025
