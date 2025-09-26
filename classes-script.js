@@ -103,7 +103,7 @@ function gerarTabelaNiveis(classe) {
         },
         
         'conjurador-completo': {
-            colunas: ['Nível', 'Bônus de Proficiência', 'Características', 'Recurso', 'Truques', 'Slots de Magia'],
+            colunas: ['Nível', 'Bônus de Proficiência', 'Características', 'Recurso', 'Truques', 'Slots de Magia por Nível\n1st 2nd 3rd 4th 5th 6th 7th 8th 9th'],
             dados: (nivel) => [
                 nivel.nivel,
                 nivel.proficiencia,
@@ -113,6 +113,71 @@ function gerarTabelaNiveis(classe) {
                 gerarSlotsMagia(nivel.slotsMagia)
             ],
             classeCSS: 'tabela-conjurador'
+        },
+
+        // Exemplo 3: Conjurador sem recurso
+        'conjurador-sem-recurso': {
+            colunas: ['Nível', 'Bônus de Proficiência', 'Características', 'Truques', 'Slots de Magia por Nível de Magia'],
+            dados: (nivel) => [
+                nivel.nivel,
+                nivel.proficiencia,
+                nivel.caracteristicas,
+                nivel.truques || '-',
+                gerarSlotsMagia(nivel.slotsMagia)
+            ],
+            classeCSS: 'tabela-conjurador'
+        },
+        
+        // Exemplo 4: Combatente sem recurso
+        'combatente-sem-recurso': {
+            colunas: ['Nível', 'Bônus de Proficiência', 'Características e Traços'],
+            dados: (nivel) => [
+                nivel.nivel,
+                nivel.proficiencia,
+                nivel.caracteristicas
+            ],
+            classeCSS: 'tabela-combatente'
+        },
+        
+        // Exemplo 5: Ladino com recurso
+        'ladino-com-recurso': {
+            colunas: ['Nível', 'Bônus de Proficiência', 'Características', 'Recurso', 'Ataque Furtivo'],
+            dados: (nivel) => [
+                nivel.nivel,
+                nivel.proficiencia,
+                nivel.caracteristicas,
+                nivel.recursoClasse || '-',
+                nivel.ataqueFurtivo || '-'
+            ],
+            classeCSS: 'tabela-ladino'
+        },
+        
+        // Exemplo 6: Ladino sem recurso
+        'ladino-sem-recurso': {
+            colunas: ['Nível', 'Bônus de Proficiência', 'Características', 'Ataque Furtivo'],
+            dados: (nivel) => [
+                nivel.nivel,
+                nivel.proficiencia,
+                nivel.caracteristicas,
+                nivel.ataqueFurtivo || '-'
+            ],
+            classeCSS: 'tabela-ladino'
+        },
+        
+        // Exemplo 7: Semi-conjurador (Warlock style)
+        'semi-conjurador': {
+            colunas: ['Nível', 'Bônus de Proficiência', 'Características', 'Truques', 'Magias', 'Espaços', 'Nível Espaços', 'Recurso'],
+            dados: (nivel) => [
+                nivel.nivel,
+                nivel.proficiencia,
+                nivel.caracteristicas,
+                nivel.truques || '-',
+                nivel.magias || '-',
+                nivel.slotsMagia || '-',
+                nivel.nivelSlots || '-',
+                nivel.recursoClasse || '-'
+            ],
+            classeCSS: 'tabela-semi-conjurador'
         }
     };
 
