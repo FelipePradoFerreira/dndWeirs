@@ -3,11 +3,27 @@ const classesData = [
     {
         id: 1,
         nome: "Guerreiro Espiritual",
-        tipoTabela: "combatente-recurso", // Novo sistema
+        tipoTabela: "combatente-recurso",
         imagemCard: "https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg",
         imagemWide: "https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg",
         
-        // ... resto dos dados permanece igual
+        descricaoCurta: "Mestres da energia vital que unem corpo e alma em harmonia",
+        
+        descricaoLonga: [
+            "No equilíbrio entre o corpo e a alma, há aqueles que ouvem o chamado do espírito, que sentem o fluxo invisível que conecta toda a existência. Esses são os Guerreiros Espirituais, mestres da energia vital, capazes de moldar suas forças interiores em poderosos feitos de habilidade e domínio elementar.",
+            "Os Guerreiros Espirituais são indivíduos que transcendem os limites do físico e do metafísico, unindo corpo, mente e alma em uma harmonia singular. Por meio de meditação e treino implacável, eles canalizam sua energia vital para superar os desafios do mundo, manifestando força sobrenatural, reflexos impecáveis e poderes que ecoam o ritmo do universo."
+        ],
+        
+        tracosPrincipais: {
+            habilidadePrimaria: "Destreza",
+            dadosVida: "d10 por nível de guerreiro espiritual",
+            proficienciaSalvaguarda: "Destreza e Sabedoria",
+            proficienciaHabilidades: "Escolha 2: Atletismo, Acrobacia, Percepção, Medicina, História e Intuição",
+            proficienciaArmas: "Armas Marciais e Simples",
+            proficienciaArmaduras: "Armaduras Leves, Médias e Escudos",
+            proficienciaFerramentas: "Um kit de ferramentas a sua escolha",
+            equipamentoInicial: "Escolha A ou B: (A) Uma arma marcial, duas adagas, um escudo, um arco curto e 20 flechas, uma armadura média ou uma armadura leve, um kit de ferramentas a sua escolha e 10 GP; ou (B) 50 GP"
+        },
         
         tabelaNiveis: [
             { 
@@ -16,15 +32,42 @@ const classesData = [
                 caracteristicas: "Pontos de Vita, Meditação Marcial", 
                 pontosVita: 2 
             },
-            // ... mais níveis
+            { 
+                nivel: 2, 
+                proficiencia: "+2", 
+                caracteristicas: "Estilo de Combate, Fluxo Espiritual", 
+                pontosVita: 3 
+            }
+        ],
+        
+        caracteristicas: [
+            {
+                nivel: 1,
+                titulo: "Pontos de Vita",
+                descricao: "Sua conexão com a energia vital é representada pelos Pontos de Vita, que você usa para alimentar suas características. Você começa com 2 Pontos de Vita e ganha mais conforme avança de nível."
+            }
         ]
     },
     {
         id: 2,
         nome: "Arcanista do Caos",
-        tipoTabela: "conjurador-completo", // Exemplo 2
+        tipoTabela: "conjurador-completo",
         imagemCard: "https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg",
         imagemWide: "https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg",
+        
+        descricaoCurta: "Conjuradores que manipulam as energias caóticas do universo",
+        descricaoLonga: ["Descrição do Arcanista do Caos..."],
+        
+        tracosPrincipais: {
+            habilidadePrimaria: "Inteligência",
+            dadosVida: "d6 por nível",
+            proficienciaSalvaguarda: "Inteligência e Carisma",
+            proficienciaHabilidades: "Escolha 2 habilidades",
+            proficienciaArmas: "Armas Simples",
+            proficienciaArmaduras: "Nenhuma",
+            proficienciaFerramentas: "Kit de escriba",
+            equipamentoInicial: "Equipamento básico"
+        },
         
         tabelaNiveis: [
             { 
@@ -33,101 +76,17 @@ const classesData = [
                 caracteristicas: "Magia do Caos", 
                 recursoClasse: 0,
                 truques: 2,
-                slotsMagia: [2, 0, 0, 0, 0, 0, 0, 0, 0] // slots por nível [1st, 2nd, ... 9th]
-            },
-            { 
-                nivel: 2, 
-                proficiencia: "+2", 
-                caracteristicas: "Traço Caótico", 
-                recursoClasse: 1,
-                truques: 3,
-                slotsMagia: [3, 0, 0, 0, 0, 0, 0, 0, 0]
-            }
-        ]
-    },
-    {
-        id: 3,
-        nome: "Feiticeiro Sombrio",
-        tipoTabela: "conjurador-sem-recurso", // Exemplo 3
-        imagemCard: "https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg",
-        imagemWide: "https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg",
-        
-        tabelaNiveis: [
-            { 
-                nivel: 1, 
-                proficiencia: "+2", 
-                caracteristicas: "Magia das Sombras", 
-                truques: 3,
                 slotsMagia: [2, 0, 0, 0, 0, 0, 0, 0, 0]
             }
-        ]
-    },
-    {
-        id: 4,
-        nome: "Mestre das Lâminas",
-        tipoTabela: "combatente-sem-recurso", // Exemplo 4
-        imagemCard: "https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg",
-        imagemWide: "https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg",
+        ],
         
-        tabelaNiveis: [
-            { 
-                nivel: 1, 
-                proficiencia: "+2", 
-                caracteristicas: "Estilo de Duas Armas" 
-            }
-        ]
-    },
-    {
-        id: 5,
-        nome: "Ladino Astuto",
-        tipoTabela: "ladino-com-recurso", // Exemplo 5
-        imagemCard: "https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg",
-        imagemWide: "https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg",
-        
-        tabelaNabelaNiveis: [
-            { 
-                nivel: 1, 
-                proficiencia: "+2", 
-                caracteristicas: "Ataque Furtivo, Perícia", 
-                recursoClasse: 1,
-                ataqueFurtivo: "1d6"
-            }
-        ]
-    },
-    {
-        id: 6,
-        nome: "Ladino Ágil",
-        tipoTabela: "ladino-sem-recurso", // Exemplo 6
-        imagemCard: "https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg",
-        imagemWide: "https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg",
-        
-        tabelaNiveis: [
-            { 
-                nivel: 1, 
-                proficiencia: "+2", 
-                caracteristicas: "Ataque Furtivo", 
-                ataqueFurtivo: "1d6"
-            }
-        ]
-    },
-    {
-        id: 7,
-        nome: "Invocador do Pacto",
-        tipoTabela: "semi-conjurador", // Exemplo 7
-        imagemCard: "https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg",
-        imagemWide: "https://img.freepik.com/free-vector/illustration-gallery-icon_53876-27002.jpg",
-        
-        tabelaNiveis: [
-            { 
-                nivel: 1, 
-                proficiencia: "+2", 
-                caracteristicas: "Magia de Pacto", 
-                truques: 2,
-                magias: 2,
-                slotsMagia: 1,
-                nivelSlots: "1°",
-                recursoClasse: 3
+        caracteristicas: [
+            {
+                nivel: 1,
+                titulo: "Magia do Caos",
+                descricao: "Você conhece truques e pode lançar magias."
             }
         ]
     }
+    // Adicione outras classes depois que esta funcionar
 ];
