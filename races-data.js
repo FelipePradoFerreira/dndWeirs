@@ -20,6 +20,7 @@ const racasData = [
                 descricao: "Os humanos de Weirs tem culturas diferentes que moldam seus talentos e habilidades desde o nascimento. Escolha um talento e uma perícia relacionados ao seu local de nascimento."
             }
             ]
+        }
         Tyinen: {
             descrição: "Após a recente descoberta e implementação dos Cristais Arcanos no dia-a-dia do continente, foi descoberto que esse recurso mágico valioso produz efeitos inusitados no corpo de humanos que ficam em contato com o composto. Na maior parte dos casos o triste fim é o envenenamento arcano que leva a sequelas físicas severas e em alguns casos até a morte. Alguns humanos conseguem sobreviver ao envenenamento arcano e estes podem desenvolver habilidades sobrehumanas depois do contato.",
             incrementoHabilidade: "Escolha dois atributos e aumente cada um em dois pontos.",
@@ -43,7 +44,8 @@ const racasData = [
             }
             ]
         }    
-    },
+    }
+},
     {
         id: 2,
         nome: "Sylvanos",
