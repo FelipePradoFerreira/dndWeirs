@@ -31,6 +31,9 @@ function mostrarDetalhesRaca(id) {
     const detalhesSection = document.getElementById('detalhes-raca');
     detalhesSection.style.display = 'block';
     
+    // Verifica se é uma raça com sub-raças (como Humano)
+    const temSubRacas = raca.HumanoTradicional || raca.Tyinen || raca.Escamados;
+    
     // Preenche os detalhes
     detalhesSection.innerHTML = `
         <div class="raca-header">
@@ -65,13 +68,16 @@ function mostrarDetalhesRaca(id) {
                     <div class="raca-caracteristica">
                         <strong>Linguagem:</strong> ${raca.caracteristicas.linguagem}
                     </div>
+                    ${!temSubRacas ? `
                     <div class="raca-caracteristica">
                         <strong>Incremento de Habilidade:</strong> ${raca.incrementoHabilidade}
                     </div>
+                    ` : ''}
                 </div>
             </div>
             
             <div class="raca-coluna">
+                ${!temSubRacas ? `
                 <div class="raca-secao">
                     <h3>Como um ${raca.nome}, você tem esses traços especiais:</h3>
                     <div class="raca-traços">
@@ -82,6 +88,65 @@ function mostrarDetalhesRaca(id) {
                         `).join('')}
                     </div>
                 </div>
+                ` : `
+                <!-- Seção para raças com sub-raças -->
+                <div class="raca-secao">
+                    <h3>Variantes de ${raca.nome}</h3>
+                    ${raca.HumanoTradicional ? `
+                    <div class="sub-raca">
+                        <h4>Humano Tradicional</h4>
+                        <div class="raca-caracteristica">
+                            <strong>Incremento de Habilidade:</strong> ${raca.HumanoTradicional.incrementoHabilidade}
+                        </div>
+                        <div class="raca-traços">
+                            ${raca.HumanoTradicional.tracos.map((traco, index) => `
+                                <div class="raca-traço">
+                                    <strong>${index + 1}. ${traco.nome}:</strong> ${traco.descricao}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    ` : ''}
+                    
+                    ${raca.Tyinen ? `
+                    <div class="sub-raca">
+                        <h4>Tyinen</h4>
+                        <div class="raca-descricao">
+                            ${raca.Tyinen.descrição}
+                        </div>
+                        <div class="raca-caracteristica">
+                            <strong>Incremento de Habilidade:</strong> ${raca.Tyinen.incrementoHabilidade}
+                        </div>
+                        <div class="raca-traços">
+                            ${raca.Tyinen.tracos.map((traco, index) => `
+                                <div class="raca-traço">
+                                    <strong>${index + 1}. ${traco.nome}:</strong> ${traco.descricao}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    ` : ''}
+                    
+                    ${raca.Escamados ? `
+                    <div class="sub-raca">
+                        <h4>Escamados</h4>
+                        <div class="raca-descricao">
+                            ${raca.Escamados.descricao}
+                        </div>
+                        <div class="raca-caracteristica">
+                            <strong>Incremento de Habilidade:</strong> ${raca.Escamados.incrementoHabilidade}
+                        </div>
+                        <div class="raca-traços">
+                            ${raca.Escamados.tracos.map((traco, index) => `
+                                <div class="raca-traço">
+                                    <strong>${index + 1}. ${traco.nome}:</strong> ${traco.descricao}
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                    ` : ''}
+                </div>
+                `}
             </div>
         </div>
     `;
