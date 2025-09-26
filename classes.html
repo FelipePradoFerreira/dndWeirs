@@ -3,23 +3,34 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Raças - D&D Homebrew</title>
-    <link rel="stylesheet" href="style.css">
+    <title>Classes - D&D Homebrew</title>
+    <link rel="stylesheet" href="style-classes.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>🏔️ Raças Personalizadas</h1>
-            <p>Descubra raças únicas para seus personagens</p>
-            <a href="index.html" style="color: #90cdf4; text-decoration: none;">← Voltar ao Menu</a>
+            <h1>⚔️ Classes Personalizadas</h1>
+            <p>Explore classes únicas para seus personagens</p>
+            <a href="index.html" class="back-link">← Voltar ao Menu</a>
         </div>
     </header>
     
     <main class="container">
-        <section style="background: white; padding: 2rem; border-radius: 8px; margin: 2rem 0;">
-            <h2>Conteúdo em Desenvolvimento</h2>
-            <p>Esta página será dedicada às raças personalizadas do seu sistema homebrew.</p>
+        <!-- View 1: Lista de Classes -->
+        <section id="lista-classes" class="classes-lista">
+            <h2>Classes Disponíveis</h2>
+            <div class="classes-container" id="classes-container">
+                <!-- Cards serão gerados pelo JavaScript -->
+            </div>
+        </section>
+
+        <!-- View 2: Detalhes da Classe -->
+        <section id="detalhes-classe" class="detalhes-classe" style="display: none;">
+            <!-- Conteúdo será preenchido pelo JavaScript -->
         </section>
     </main>
+
+    <script src="classes-data.js"></script>
+    <script src="classes-script.js"></script>
 </body>
 </html>
