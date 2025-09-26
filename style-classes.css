@@ -246,3 +246,57 @@
     color: #63b3ed;
     text-decoration: underline;
 }
+
+.classe-imagem-wide {
+    width: 100%;
+    height: 300px;
+    overflow: hidden;
+}
+
+.classe-imagem-wide img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+/* Estilos específicos para cada tipo de tabela */
+.tabela-combatente {
+    background: #f0f4f8;
+}
+
+.tabela-combatente th {
+    background: #2d3748;
+}
+
+.tabela-conjurador {
+    background: #faf5ff;
+}
+
+.tabela-conjurador th {
+    background: #6b46c1;
+}
+
+.tabela-ladino {
+    background: #f0fff4;
+}
+
+.tabela-ladino th {
+    background: #38a169;
+}
+
+.tabela-semi-conjurador {
+    background: #fff5f5;
+}
+
+.tabela-semi-conjurador th {
+    background: #c53030;
+}
+
+/* Melhorar a visualização dos slots de magia */
+.tabela-niveis td {
+    white-space: nowrap;
+}
+
+.tabela-niveis th span {
+    font-weight: normal;
+}
