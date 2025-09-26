@@ -4,22 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Antecedentes - D&D Homebrew</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style-backgrounds.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1> Antecedentes </h1>
-            <p>Descubra antecedentes únicos para seus personagens</p>
-            <a href="index.html" style="color: #90cdf4; text-decoration: none;">← Voltar ao Menu</a>
+            <h1>📖 Antecedentes</h1>
+            <p>Histórias de origem para seus personagens</p>
+            <a href="index.html" class="back-link">← Voltar ao Menu</a>
         </div>
     </header>
     
     <main class="container">
-        <section style="background: white; padding: 2rem; border-radius: 8px; margin: 2rem 0;">
-            <h2>Conteúdo em Desenvolvimento</h2>
-            <p>Esta página será dedicada aos antecedentes personalizados do sistema homebrew.</p>
+        <section id="lista-backgrounds" class="backgrounds-lista">
+            <h2>Antecedentes Disponíveis</h2>
+            <div class="backgrounds-container" id="backgrounds-container">
+                <!-- Cards serão gerados pelo JavaScript -->
+            </div>
+        </section>
+
+        <section id="detalhes-background" class="detalhes-background" style="display: none;">
+            <!-- Conteúdo será preenchido pelo JavaScript -->
         </section>
     </main>
+
+    <script src="js/backgrounds-data.js"></script>
+    <script src="js/backgrounds-script.js"></script>
 </body>
 </html>

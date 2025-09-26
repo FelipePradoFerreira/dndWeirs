@@ -4,22 +4,31 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Talentos - D&D Homebrew</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/style-feats.css">
 </head>
 <body>
     <header>
         <div class="container">
-            <h1>Talentos Personalizados</h1>
-            <p>Descubra talentos únicos para seus personagens</p>
-            <a href="index.html" style="color: #90cdf4; text-decoration: none;">← Voltar ao Menu</a>
+            <h1>✨ Talentos</h1>
+            <p>Habilidades especiais para seus personagens</p>
+            <a href="index.html" class="back-link">← Voltar ao Menu</a>
         </div>
     </header>
     
     <main class="container">
-        <section style="background: white; padding: 2rem; border-radius: 8px; margin: 2rem 0;">
-            <h2>Conteúdo em Desenvolvimento</h2>
-            <p>Esta página será dedicada talentos personalizados do sistema homebrew.</p>
+        <section id="lista-feats" class="feats-lista">
+            <h2>Talentos Disponíveis</h2>
+            <div class="feats-container" id="feats-container">
+                <!-- Cards serão gerados pelo JavaScript -->
+            </div>
+        </section>
+
+        <section id="detalhes-feat" class="detalhes-feat" style="display: none;">
+            <!-- Conteúdo será preenchido pelo JavaScript -->
         </section>
     </main>
+
+    <script src="js/feats-data.js"></script>
+    <script src="js/feats-script.js"></script>
 </body>
 </html>
