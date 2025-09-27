@@ -169,3 +169,111 @@ footer {
         font-size: 1.8rem;
     }
 }
+
+/* Estilos específicos para navbar */
+.navbar {
+    background: #222;
+    color: #fff;
+    padding: 10px 0;
+    position: sticky;
+    top: 0;
+    z-index: 1000;
+}
+.navbar ul {
+    display: flex;
+    flex-wrap: wrap;
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+}
+.navbar li {
+    margin: 0 15px;
+    transition: background 0.2s;
+}
+.navbar li:hover {
+    background: #4fc3f7; /* azul claro */
+    border-radius: 5px;
+}
+.navbar a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    display: block;
+    padding: 8px 16px;
+}
+
+/* Botão flutuante */
+.navbar-btn {
+    position: fixed;
+    right: 20px;
+    top: 20px;
+    background: #222;
+    color: #fff;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 2em;
+    z-index: 2000;
+    cursor: pointer;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+    display: none;
+}
+
+/* Navbar vertical */
+.navbar-vertical {
+    position: fixed;
+    top: 0;
+    right: 0;
+    width: 220px;
+    height: 100vh;
+    background: #222;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    padding-top: 60px;
+    box-shadow: -2px 0 8px rgba(0,0,0,0.2);
+    display: flex !important;
+    z-index: 3000;
+}
+.navbar-vertical ul {
+    flex-direction: column;
+    width: 100%;
+    padding: 0;
+}
+.navbar-vertical li {
+    width: 100%;
+    margin: 0;
+    border-bottom: 1px solid #333;
+}
+.navbar-vertical li:hover {
+    background: #4fc3f7;
+}
+.navbar-vertical a {
+    width: 100%;
+    padding: 12px 20px;
+}
+
+/* Botão de fechar */
+.navbar-close-btn {
+    position: absolute;
+    top: 10px;
+    right: 15px;
+    background: transparent;
+    color: #fff;
+    border: none;
+    font-size: 1.8em;
+    cursor: pointer;
+    z-index: 3100;
+}
+
+@media (max-width: 768px) {
+    .navbar ul {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .navbar li {
+        margin: 10px 0;
+    }
+}

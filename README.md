@@ -6,18 +6,23 @@ Uma aplicação web para organizar e exibir conteúdo homebrew de Dungeons & Dra
 
 ## 📋 Changelog
 
-### Versão 0.5.0 (Atual)
-- **Data:**25/09/2025
+### Versão 0.5.1 (atual)
+- **Data:**26/09/2025
 - **Melhorias:**
-  - Alteração da estrutura de arquivos para melhor organização.
-  - Adição das páginas "Antecedentes" e "Talentos", com seus recursos já inseridos.
-  - Alteração dos scripts e estilo da página raças.
+  - Adição da Navbar para facilidade de pesquisa
+
+### Versão 0.5.0
+- **Data:**26/09/2025
+- **Melhorias:**
+  - Alteração da estrutura de arquivos para melhor organização
+  - Adição das páginas "Antecedentes" e "Talentos", com seus recursos já inseridos
+  - Alteração dos scripts e estilo da página raças
 
 ### Versão 0.4.3
 - **Data:**25/09/2025
 - **Melhorias:**
-  - Correção da imagem wide de classe.
-  - Implementação de novos tipos de tabela de classe, de acordo com as necessidades das classes.
+  - Correção da imagem wide de classe
+  - Implementação de novos tipos de tabela de classe, de acordo com as necessidades das classes
 
 ### Versão 0.4.2
 - **Data:**25/09/2025
