@@ -36,7 +36,7 @@ function mostrarDetalhesClasse(id) {
     detalhesSection.innerHTML = `
         <div class="classe-header">
             <h2 class="classe-titulo">${classe.nome}</h2>
-            <button class="btn-fechar" onclick="voltarParaLista()">×</button>
+            <button class="btn-fechar" onclick="voltarParaListaClasses()">×</button>
         </div>
         
         <div class="classe-imagem-wide">
@@ -224,10 +224,24 @@ function formatarChave(chave) {
     return formatacoes[chave] || chave;
 }
 
-function voltarParaLista() {
+function voltarParaListaClasses() {
     document.getElementById('detalhes-classe').style.display = 'none';
     document.getElementById('lista-classes').style.display = 'block';
 }
+
+// Configura o clique fora da área de detalhes para fechar
+document.addEventListener('click', function(event) {
+    const detalhesSection = document.getElementById('detalhes-classe');
+    const listaClasses = document.getElementById('lista-classes');
+    
+    // Se a seção de detalhes está visível E o clique foi fora dela
+    // E não foi em um card da lista
+    if (detalhesSection.style.display === 'block' && 
+        !detalhesSection.contains(event.target) &&
+        !event.target.closest('.classe-card')) {
+        voltarParaListaClasses();
+    }
+});
 
 // Carrega a lista quando a página abre
 document.addEventListener('DOMContentLoaded', carregarListaClasses);

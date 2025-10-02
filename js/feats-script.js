@@ -96,4 +96,18 @@ function voltarParaListaFeats() {
     document.getElementById('lista-feats').style.display = 'block';
 }
 
+// Configura o clique fora da área de detalhes para fechar
+document.addEventListener('click', function(event) {
+    const detalhesSection = document.getElementById('detalhes-feat');
+    const listaFeats = document.getElementById('lista-feats');
+    
+    // Se a seção de detalhes está visível E o clique foi fora dela
+    // E não foi em um card da lista
+    if (detalhesSection.style.display === 'block' && 
+        !detalhesSection.contains(event.target) &&
+        !event.target.closest('.feat-card')) {
+        voltarParaListaFeats();
+    }
+});
+
 document.addEventListener('DOMContentLoaded', carregarListaFeats);

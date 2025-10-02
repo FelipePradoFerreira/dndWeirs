@@ -258,5 +258,19 @@ function voltarParaLista() {
     document.getElementById('lista-racas').style.display = 'block';
 }
 
+// Configura o clique fora da área de detalhes para fechar
+document.addEventListener('click', function(event) {
+    const detalhesSection = document.getElementById('detalhes-raca');
+    const listaRacas = document.getElementById('lista-racas');
+    
+    // Se a seção de detalhes está visível E o clique foi fora dela
+    // E não foi em um card da lista
+    if (detalhesSection.style.display === 'block' && 
+        !detalhesSection.contains(event.target) &&
+        !event.target.closest('.raca-card')) {
+        voltarParaLista();
+    }
+});
+
 // Carrega a lista quando a página abre
 document.addEventListener('DOMContentLoaded', carregarListaRacas);

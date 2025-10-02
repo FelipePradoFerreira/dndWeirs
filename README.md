@@ -6,7 +6,12 @@ Uma aplicação web para organizar e exibir conteúdo homebrew de Dungeons & Dra
 
 ## 📋 Changelog
 
-### Versão 0.5.2 (Atual)
+### Versão 0.5.3 (Atual)
+- **Data:**01/10/2025
+- **Melhorias:**
+  - Adição de script para fechar os detalhes das raças, classes, antecedentes e talentos ao clicar fora da div.
+
+### Versão 0.5.2
 - **Data:**01/10/2025
 - **Melhorias:**
   - Adição das características das raças Humano, Taurino, Dracônido e Fada.
