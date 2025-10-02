@@ -16,7 +16,7 @@
 
 .background-card {
     background: white;
-    border-radius: 8px;
+    border-radius: 4px;
     padding: 1.5rem;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -39,7 +39,7 @@
 /* Detalhes do Background */
 .detalhes-background {
     background: white;
-    border-radius: 12px;
+    border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }

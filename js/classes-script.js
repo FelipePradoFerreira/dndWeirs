@@ -103,7 +103,7 @@ function gerarTabelaNiveis(classe) {
         },
         
         'conjurador-completo': {
-            colunas: ['Nível', 'Bônus de Proficiência', 'Características', 'Recurso', 'Truques', 'Slots de Magia por Nível1st 2nd 3rd 4th 5th 6th 7th 8th 9th'],
+            colunas: ['Nível', 'Bônus de Proficiência', 'Características', 'Recurso', 'Truques', 'Slots de Magia por Nível<br>1st 2nd 3rd 4th 5th 6th 7th 8th 9th'],
             dados: (nivel) => [
                 nivel.nivel,
                 nivel.proficiencia,

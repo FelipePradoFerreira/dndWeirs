@@ -8,7 +8,7 @@
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    background: linear-gradient(135deg, #313131 0%, #131313 100%);
     min-height: 100vh;
     color: #333;
 }
@@ -50,7 +50,7 @@ header p {
 /* Cards individuais - Tamanho FIXO */
 .card {
     background: white;
-    border-radius: 12px;
+    border-radius: 4px;
     overflow: hidden;
     text-decoration: none;
     color: inherit;

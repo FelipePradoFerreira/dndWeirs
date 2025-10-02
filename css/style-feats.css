@@ -16,7 +16,7 @@
 
 .feat-card {
     background: white;
-    border-radius: 8px;
+    border-radius: 4px;
     padding: 1.5rem;
     transition: all 0.3s ease;
     box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
@@ -45,7 +45,7 @@
 /* Detalhes do Feat */
 .detalhes-feat {
     background: white;
-    border-radius: 12px;
+    border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
@@ -85,6 +85,26 @@
     color: #2d3748;
     margin-bottom: 0.5rem;
     font-size: 1.1rem;
+}
+
+.btn-fechar {
+    background: #718096;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.btn-fechar:hover {
+    background: #e53e3e;
+    transform: scale(1.1);
 }
 
 /* Estilos para talentos com múltiplos níveis */

@@ -17,7 +17,7 @@
 
 .classe-card {
     background: white;
-    border-radius: 12px;
+    border-radius: 4px;
     overflow: hidden;
     transition: all 0.3s ease;
     box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
@@ -65,7 +65,7 @@
 /* Detalhes da Classe */
 .detalhes-classe {
     background: white;
-    border-radius: 12px;
+    border-radius: 4px;
     overflow: hidden;
     box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
 }
