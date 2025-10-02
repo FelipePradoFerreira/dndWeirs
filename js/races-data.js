@@ -719,52 +719,48 @@ const racasData = [
     //Cranoris ID 13
     {
         id: 13,
-        nome: "Cranori (Incompleto)",
+        nome: "Cranori",
         imagemCard: "images/cards/Cranori.jpg",
         imagemWide: "images/banner/Cranori.jpg",
-        descrição: `Texto`,
-        arte: "Nome do Artista",
-        paginaartista: "Link do Artista",
+        descrição: `Os Cranori são humanoides de porte maior e mais robusto que os humanos, marcados por uma característica única: placas ósseas externas que se formam ao longo do corpo, cobrindo 
+        regiões distintas em cada indivíduo. Alguns exibem ombros revestidos de carapaça natural, outros têm costelas ou antebraços endurecidos como armaduras vivas. Essas placas não apenas 
+        reforçam sua aparência intimidadora, como também lhes garantem uma proteção natural em combate.
+        <br>Culturalmente, os Cranori são guiados pelos prazeres intensos da vida. Batalhas, banquetes, paixões carnais e competições de resistência são vistos como expressões do próprio vigor da 
+        existência. Para eles, viver plenamente significa mergulhar sem reservas no que o corpo e o espírito podem experimentar. Essa filosofia os torna ao mesmo tempo temidos e respeitados: 
+        companheiros leais em celebrações e combates, mas perigosos quando inflamados pela raiva ou desejo.`,
+        arte: "JohnnyD",
+        paginaartista: "https://www.artstation.com/johnnyzzz",
         caracteristicas: {
             tipo: "Humanoide",
-            idade: `Texto`,
-            tamanho: `Texto`,
-            velocidade: `Texto`,
-            linguagem: `Texto`,
+            idade: `Cranoris envelhecem de modo similar aos humanos, atingindo maioridade aos 18 anos e vivendo por cerca de um século.`,
+            tamanho: `Cranoris geralmente medem entre 1,75m e 1,9m e possuem o corpo robusto. Seu tamanho é médio.`,
+            velocidade: `Você tem um deslocamento base de 30 ft.`,
+            linguagem: `Você domina o idioma Comum e outro de sua escolha.`,
         },
+        incrementoHabilidade: "Escolha dois atributos entre: Força, Destreza, Constituição ou Carisma. Você ganha dois pontos em cada uma das duas escolhas.",
         tracosComuns: [
             {
-                nome: "Traço Comum Exemplo",
-                descrição: `Texto`
-            }
-        ],
-        subRacas: [
-            {
-                tipo: "semDescricao",
-                nome: "Subraça Sem Descrição Exemplo",
-                tracos: [
-                    {
-                        nome: "Nome do Traço",
-                        descrição: `Texto`
-                    }
-                ]
+                nome: "Carapaça Protetora",
+                descrição: `Você tem desvantagem em todas as armaduras, independentemente dos benefícios de sua classe. Enquanto você não estiver vestindo armadura, sua Classe de Armadura é 
+                igual a 13 + seu modificador de Constituição. Você pode usar um escudo e ainda assim ganhar este benefício.`
             },
             {
-                tipo: "comDescricao",
-                nome: "Subraça Com Descrição Exemplo",
-                descrição: `Texto`,
-                tracos: [
-                    {
-                        nome: "Nome do Traço",
-                        descrição: `Texto`
-                    }
-                ]
+                nome: "Troféu Letal",
+                descrição: `Você transformou as placas ósseas de um oponente cranori superado em batalha em sua nova arma. Escolha uma arma que você tenha proficiência. Você pode criá-la com 
+                a estrutura óssea, dando-a os seguintes benefícios:
+                <br>• A arma ganha +1 nas rolagens de acerto.
+                <br>• Você garante acertos críticos com rolagens de 19 ou 20 usando essa arma.`
+            },
+            {
+                nome: "Celebração Sangrenta",
+                descrição: `Imediatamente após você reduzir uma criatura hostil de tamanho Médio ou Maior a 0 pontos de vida, você pode usar sua reação para realizar um grito triunfante, 
+                ganhando pontos de vida igual a metade do seu nível (mínimo 1, arredondado para cima) + seu modificador de constituição. Você só pode usar esse traço uma vez por descanso curto.`
             }
         ]
     },
-    //Curvibicos ID 13
+    //Curvibicos ID 14
     {
-        id: 13,
+        id: 14,
         nome: "Curvibico (Incompleto)",
         imagemCard: "images/cards/Curvibico.jpg",
         imagemWide: "images/banner/Curvibico.jpg",
@@ -808,6 +804,15 @@ const racasData = [
             }
         ]
     },
+
+
+
+
+
+
+
+
+    
     //Exemplo de Raça
     {
         id: 99,

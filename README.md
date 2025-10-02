@@ -6,7 +6,12 @@ Uma aplicação web para organizar e exibir conteúdo homebrew de Dungeons & Dra
 
 ## 📋 Changelog
 
-### Versão 0.5.5 (Atual)
+### Versão 0.6.1 (Atual)
+- **Data:**02/10/2025
+- **Melhorias:**
+  - Adição dos Cranoris.
+
+### Versão 0.6.0
 - **Data:**02/10/2025
 - **Melhorias:**
   - Reestruturação dos scripts de raça.
