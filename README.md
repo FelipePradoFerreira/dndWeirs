@@ -6,7 +6,12 @@ Uma aplicação web para organizar e exibir conteúdo homebrew de Dungeons & Dra
 
 ## 📋 Changelog
 
-### Versão 0.5.1 (atual)
+### Versão 0.5.2 (Atual)
+- **Data:**01/10/2025
+- **Melhorias:**
+  - Adição das características das raças Humano, Taurino, Dracônido e Fada.
+
+### Versão 0.5.1
 - **Data:**26/09/2025
 - **Melhorias:**
   - Adição da Navbar para facilidade de pesquisa
