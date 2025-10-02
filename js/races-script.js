@@ -31,8 +31,10 @@ function mostrarDetalhesRaca(id) {
     const detalhesSection = document.getElementById('detalhes-raca');
     detalhesSection.style.display = 'block';
     
-    // Verifica se é uma raça com sub-raças (como Humano)
-    const temSubRacas = raca.HumanoTradicional || raca.Tyinen || raca.Escamado || raca.Resquicios || raca.Teido || raca.Pagona || raca.Volan || raca.FadaTradicional || raca.CentelhaFlora;
+    // Verifica se tem sub-raças ou traços comuns
+    const temSubRacas = raca.subRacas && raca.subRacas.length > 0;
+    const temTracosComuns = raca.tracosComuns && raca.tracosComuns.length > 0;
+    const temTracosNormais = raca.tracos && raca.tracos.length > 0;
     
     // Preenche os detalhes
     detalhesSection.innerHTML = `
@@ -47,7 +49,6 @@ function mostrarDetalhesRaca(id) {
         
         <div class="raca-conteudo">
             <div class="raca-coluna">
-
                 <div class="artista-credito">
                     <a href="${raca.paginaartista}" target="_blank">Arte por: ${raca.arte}</a>
                 </div>
@@ -73,7 +74,7 @@ function mostrarDetalhesRaca(id) {
                     <div class="raca-caracteristica">
                         <strong>Linguagem:</strong> ${raca.caracteristicas.linguagem}
                     </div>
-                    ${!temSubRacas ? `
+                    ${raca.incrementoHabilidade ? `
                     <div class="raca-caracteristica">
                         <strong>Incremento de Habilidade:</strong> ${raca.incrementoHabilidade}
                     </div>
@@ -82,11 +83,12 @@ function mostrarDetalhesRaca(id) {
             </div>
             
             <div class="raca-coluna">
-                ${!temSubRacas ? `
+                ${!temSubRacas && temTracosNormais ? `
+                <!-- Raças sem sub-raças (como Taurino) -->
                 <div class="raca-secao">
                     <h3>Como ${raca.nome}, você tem esses traços especiais:</h3>
                     <div class="raca-traços">
-                        ${raca.tracos.map((traco, index) => `
+                        ${raca.tracos.map(traco => `
                             <div class="raca-traço">
                                 <strong>${traco.nome}.</strong> ${traco.descrição}
                             </div>
@@ -94,154 +96,42 @@ function mostrarDetalhesRaca(id) {
                     </div>
                 </div>
                 ` : `
-                <!-- Seção para raças com sub-raças -->
+                <!-- Raças com sub-raças -->
                 <div class="raca-secao">
                     <h3>Como ${raca.nome}, você tem esses traços especiais:</h3>
-                    ${raca.HumanoTradicional ? `
-                    <div class="sub-raca">
-                        <h4>Humano Tradicional</h4>
-                        <div class="raca-caracteristica">
-                            <strong>Incremento de Habilidade:</strong> ${raca.HumanoTradicional.incrementoHabilidade}
-                        </div>
+                    
+                    ${temTracosComuns ? `
                         <div class="raca-traços">
-                            ${raca.HumanoTradicional.tracos.map((traco, index) => `
+                            ${raca.tracosComuns.map(traco => `
                                 <div class="raca-traço">
                                     <strong>${traco.nome}.</strong> ${traco.descrição}
                                 </div>
                             `).join('')}
-                        </div>
-                    </div>
                     ` : ''}
-
-                    ${raca.Resquicios ? `
-                        ${raca.Resquicios.tracos.map((traco, index) => `
-                            <div class="raca-traço">
-                                <strong>${traco.nome}.</strong> ${traco.descrição}
+                    
+                    <!-- Renderiza cada sub-raça -->
+                    ${temSubRacas ? raca.subRacas.map(subRaca => `
+                        <div class="sub-raca">
+                            <h4>${subRaca.nome}</h4>
+                            ${subRaca.descrição ? `
+                                <div class="raca-descrição">
+                                    ${subRaca.descrição}
+                                </div>
+                            ` : ''}
+                            ${subRaca.incrementoHabilidade ? `
+                                <div class="raca-caracteristica">
+                                    <strong>Incremento de Habilidade:</strong> ${subRaca.incrementoHabilidade}
+                                </div>
+                            ` : ''}
+                            <div class="raca-traços">
+                                ${subRaca.tracos.map(traco => `
+                                    <div class="raca-traço">
+                                        <strong>${traco.nome}.</strong> ${traco.descrição}
+                                    </div>
+                                `).join('')}
                             </div>
-                        `).join('')}
-                    ` : ''}
-                    
-                    ${raca.Tyinen ? `
-                    <div class="sub-raca">
-                        <h4>Tyinen</h4>
-                        <div class="raca-descrição">
-                            ${raca.Tyinen.descrição}
                         </div>
-                        <div class="raca-caracteristica">
-                            <strong>Incremento de Habilidade:</strong> ${raca.Tyinen.incrementoHabilidade}
-                        </div>
-                        <div class="raca-traços">
-                            ${raca.Tyinen.tracos.map((traco, index) => `
-                                <div class="raca-traço">
-                                    <strong>${traco.nome}.</strong> ${traco.descrição}
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                    ` : ''}
-                    
-                    ${raca.Escamado ? `
-                    <div class="sub-raca">
-                        <h4>Escamado</h4>
-                        <div class="raca-descrição">
-                            ${raca.Escamado.descrição}
-                        </div>
-                        <div class="raca-caracteristica">
-                            <strong>Incremento de Habilidade:</strong> ${raca.Escamado.incrementoHabilidade}
-                        </div>
-                        <div class="raca-traços">
-                            ${raca.Escamado.tracos.map((traco, index) => `
-                                <div class="raca-traço">
-                                    <strong>${traco.nome}.</strong> ${traco.descrição}
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                    ` : ''}
-
-                    ${raca.Teido ? `
-                    <div class="sub-raca">
-                        <h4>Teído</h4>
-                        <div class="raca-descrição">
-                            ${raca.Teido.descrição}
-                        </div>
-                        <div class="raca-traços">
-                            ${raca.Teido.tracos.map((traco, index) => `
-                                <div class="raca-traço">
-                                    <strong>${traco.nome}.</strong> ${traco.descrição}
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                    ` : ''}
-
-                    ${raca.Pagona ? `
-                    <div class="sub-raca">
-                        <h4>Pagona</h4>
-                        <div class="raca-descrição">
-                            ${raca.Pagona.descrição}
-                        </div>
-                        <div class="raca-traços">
-                            ${raca.Pagona.tracos.map((traco, index) => `
-                                <div class="raca-traço">
-                                    <strong>${traco.nome}.</strong> ${traco.descrição}
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                    ` : ''}
-
-                    ${raca.Volan ? `
-                    <div class="sub-raca">
-                        <h4>Volan</h4>
-                        <div class="raca-descrição">
-                            ${raca.Volan.descrição}
-                        </div>
-                        <div class="raca-traços">
-                            ${raca.Volan.tracos.map((traco, index) => `
-                                <div class="raca-traço">
-                                    <strong>${traco.nome}.</strong> ${traco.descrição}
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                    ` : ''}
-
-                    ${raca.FadaTradicional ? `
-                    <div class="sub-raca">
-                        <h4>Fada Tradicional</h4>
-                        <div class="raca-caracteristica">
-                            <strong>Incremento de Habilidade:</strong> ${raca.FadaTradicional.incrementoHabilidade}
-                        </div>
-                        <div class="raca-traços">
-                            ${raca.FadaTradicional.tracos.map((traco, index) => `
-                                <div class="raca-traço">
-                                    <strong>${traco.nome}.</strong> ${traco.descrição}
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                    ` : ''}
-
-                    ${raca.CentelhaFlora ? `
-                    <div class="sub-raca">
-                        <h4>CentelhaFlora</h4>
-                        <div class="raca-descrição">
-                            ${raca.CentelhaFlora.descrição}
-                        </div>
-                        <div class="raca-caracteristica">
-                            <strong><br>Incremento de Habilidade:</strong> ${raca.CentelhaFlora.incrementoHabilidade}
-                        </div>
-                        <div class="raca-traços">
-                            ${raca.CentelhaFlora.tracos.map((traco, index) => `
-                                <div class="raca-traço">
-                                    <strong>${traco.nome}.</strong> ${traco.descrição}
-                                </div>
-                            `).join('')}
-                        </div>
-                    </div>
-                    ` : ''}
-
+                    `).join('') : ''}
                 </div>
                 `}
             </div>

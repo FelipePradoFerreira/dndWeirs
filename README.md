@@ -6,7 +6,13 @@ Uma aplicação web para organizar e exibir conteúdo homebrew de Dungeons & Dra
 
 ## 📋 Changelog
 
-### Versão 0.5.4 (Atual)
+### Versão 0.5.5 (Atual)
+- **Data:**02/10/2025
+- **Melhorias:**
+  - Reestruturação dos scripts de raça.
+  - Adição completa de todas as raças do plano mortal, com exceção de Cranori e Curvibicos.
+
+### Versão 0.5.4
 - **Data:**01/10/2025
 - **Melhorias:**
   - Modificação de estilos.
