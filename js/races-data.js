@@ -1,9 +1,16 @@
+const planosData = {
+    terra: "Terra",
+    tenebris: "Tenebris"
+};
+
 // Banco de dados das raças
 const racasData = [
+/* #region Raças da Terra (ID 1 a 100) */
     //Humanos ID 1
     {
         id: 1,
         nome: "Humano",
+        plano: planosData.terra,
         imagemCard: "images/cards/Humano.jpg",
         imagemWide: "images/banner/Humano.jpg",
         descrição: `Desde os primórdios da civilização, os humanos têm se destacado por sua adaptabilidade e resiliência. Com uma diversidade cultural rica e uma capacidade inata de inovação, 
@@ -82,6 +89,7 @@ const racasData = [
     {
         id: 2,
         nome: "Taurino",
+        plano: planosData.terra,
         imagemCard: "images/cards/Taurino.jpg",
         imagemWide: "images/banner/Taurino.jpg",
         arte: "Martin Paz",
@@ -126,6 +134,7 @@ const racasData = [
     {
         id: 3,
         nome: "Dracônido",
+        plano: planosData.terra,
         imagemCard: "images/cards/Dracônido.jpg",
         imagemWide: "images/banner/Dracônido.jpg",
         descrição: `Os dracônicos são uma raça antiga de humanoides com características de dragão. Eles podem possuir escamas em seu corpo, uma cauda reptiliana, ou asas membranosas que lhes 
@@ -224,6 +233,7 @@ const racasData = [
     {
         id: 4,
         nome: "Fada",
+        plano: planosData.terra,
         imagemCard: "images/cards/Fada.jpg",
         imagemWide: "images/banner/Fada.jpg",
         descrição: `As fadas são criaturas humanoides diminutas, medindo apenas cerca de 25 a 40 centímetros de altura. Elas possuem a habilidade de invocar asas de inseto de suas costas, 
@@ -297,6 +307,7 @@ const racasData = [
     {
         id: 5,
         nome: "Acquo",
+        plano: planosData.terra,
         imagemCard: "images/cards/Acquo.jpg",
         imagemWide: "images/banner/Acquo.jpg",
         descrição: "Os Acquos são humanoides aquáticos que habitam as profundezas e recifes esquecidos dos mares do plano material. Sua aparência mescla traços humanos com as formas de criaturas marinhas, variando conforme sua subespécie. Entre eles existem três linhagens distintas: os Selakroi, de pele áspera e dentes serrilhados, temidos por sua força e instinto predatório; os Ostelis, mais comuns e variados, com escamas coloridas e grande adaptabilidade aos diferentes habitats; e os Nautilum, de corpos mais flexíveis e olhos brilhantes, conhecidos por seus tentáculos.",
@@ -392,6 +403,7 @@ const racasData = [
     {
         id: 6,
         nome: "Aslariano",
+        plano: planosData.terra,
         imagemCard: "images/cards/Aslariano.jpg",
         imagemWide: "images/banner/Aslariano.jpg",
         descrição: `Os Aslarianos são leões humanoides orgulhosos, de presença imponente e espírito indomável. Embora vivam em populações pequenas e dispersas, sua influência se espalha por 
@@ -434,6 +446,7 @@ const racasData = [
     {
         id: 7,
         nome: "Luminari",
+        plano: planosData.terra,
         imagemCard: "images/cards/Temporario.jpg",
         imagemWide: "images/banner/Temporario.jpg",
         descrição: `Os Luminaris são humanoides pequenos e raros, de pele esverdeada marcada por linhas bioluminescentes que brilham em diferentes cores conforme suas emoções. Reclusos por 
@@ -472,6 +485,7 @@ const racasData = [
     {
         id: 8,
         nome: "Arcanuro",
+        plano: planosData.terra,
         imagemCard: "images/cards/Arcanuros.jpg",
         imagemWide: "images/banner/Arcanuros.jpg",
         descrição: `Os Arcanuros são sapos humanoides de pele úmida e olhos esbugalhados que carregam uma aura arcana natural. Diferem dos anfíbios comuns por sua postura ereta, membros mais 
@@ -523,6 +537,7 @@ const racasData = [
     {
         id: 9,
         nome: "Protóide",
+        plano: planosData.terra,
         imagemCard: "images/cards/Protoides.jpg",
         imagemWide: "images/banner/Protoides.jpg",
         descrição: `Os Protoides são uma raça telepática de humanoides amorfos, descendentes de antigas formas de vida primordiais moldadas pela própria essência arcana do mundo. Seu corpo é 
@@ -582,6 +597,7 @@ const racasData = [
     {
         id: 10,
         nome: "Lagomos",
+        plano: planosData.terra,
         imagemCard: "images/cards/Lagomo.jpg",
         imagemWide: "images/banner/Lagomo.jpg",
         descrição: `Os Lagomos são coelhos humanoides adaptados a climas frios e extremos, vivendo em pequenas comunidades isoladas. Possuem pelagem espessa que varia de tons acinzentados a 
@@ -626,6 +642,7 @@ const racasData = [
     {
         id: 11,
         nome: "Elfo",
+        plano: planosData.terra,
         imagemCard: "images/cards/Elfo.jpg",
         imagemWide: "images/banner/Elfo.jpg",
         descrição: `Os Elfos são seres altamente intelectuais e curiosos, de pele azulada, orelhas longas e pontudas, e porte esbelto e elegante. Suas feições refinadas e olhos expressivos 
@@ -677,6 +694,7 @@ const racasData = [
     {
         id: 12,
         nome: "Meio-Elfo",
+        plano: planosData.terra,
         imagemCard: "images/cards/MeioElfo.jpg",
         imagemWide: "images/banner/MeioElfo.jpg",
         descrição: `Caminhando em dois mundos, mas não pertencendo a nenhum deles, os meio-elfos combinam o que alguns dizem ser as melhores qualidades de seus pais elfos e humanos: 
@@ -720,6 +738,7 @@ const racasData = [
     {
         id: 13,
         nome: "Cranori",
+        plano: planosData.terra,
         imagemCard: "images/cards/Cranori.jpg",
         imagemWide: "images/banner/Cranori.jpg",
         descrição: `Os Cranori são humanoides de porte maior e mais robusto que os humanos, marcados por uma característica única: placas ósseas externas que se formam ao longo do corpo, cobrindo 
@@ -762,6 +781,7 @@ const racasData = [
     {
         id: 14,
         nome: "Curvibico (Incompleto)",
+        plano: planosData.terra,
         imagemCard: "images/cards/Curvibico.jpg",
         imagemWide: "images/banner/Curvibico.jpg",
         descrição: `Texto`,
@@ -804,19 +824,300 @@ const racasData = [
             }
         ]
     },
+/* #endregion */
 
+/* #region Raças de Tenebris (ID 101 a 200) */
+    //Cambion ID 101
+    {
+        id: 101,
+        nome: "Cambion",
+        plano: planosData.tenebris,
+        imagemCard: "images/cards/Cambion.jpg",
+        imagemWide: "images/banner/Cambion.jpg",
+        descrição: `Texto`,
+        arte: "Nome do Artista",
+        paginaartista: "Link do Artista",
+        caracteristicas: {
+            tipo: "Humanoide",
+            idade: `Texto`,
+            tamanho: `Texto`,
+            velocidade: `Texto`,
+            linguagem: `Texto`,
+        },
+        tracosComuns: [
+            {
+                nome: "Traço Comum Exemplo",
+                descrição: `Texto`
+            }
+        ],
+        subRacas: [
+            {
+                tipo: "semDescricao",
+                nome: "Subraça Sem Descrição Exemplo",
+                tracos: [
+                    {
+                        nome: "Nome do Traço",
+                        descrição: `Texto`
+                    }
+                ]
+            },
+            {
+                tipo: "comDescricao",
+                nome: "Subraça Com Descrição Exemplo",
+                descrição: `Texto`,
+                tracos: [
+                    {
+                        nome: "Nome do Traço",
+                        descrição: `Texto`
+                    }
+                ]
+            }
+        ]
+    },
+    //Daeva ID 102
+    {
+        id: 102,
+        nome: "Daeva",
+        plano: planosData.tenebris,
+        imagemCard: "images/cards/Daeva.jpg",
+        imagemWide: "images/banner/Daeva.jpg",
+        descrição: `Texto`,
+        arte: "Nome do Artista",
+        paginaartista: "Link do Artista",
+        caracteristicas: {
+            tipo: "Humanoide",
+            idade: `Texto`,
+            tamanho: `Texto`,
+            velocidade: `Texto`,
+            linguagem: `Texto`,
+        },
+        tracosComuns: [
+            {
+                nome: "Traço Comum Exemplo",
+                descrição: `Texto`
+            }
+        ],
+        subRacas: [
+            {
+                tipo: "semDescricao",
+                nome: "Subraça Sem Descrição Exemplo",
+                tracos: [
+                    {
+                        nome: "Nome do Traço",
+                        descrição: `Texto`
+                    }
+                ]
+            },
+            {
+                tipo: "comDescricao",
+                nome: "Subraça Com Descrição Exemplo",
+                descrição: `Texto`,
+                tracos: [
+                    {
+                        nome: "Nome do Traço",
+                        descrição: `Texto`
+                    }
+                ]
+            }
+        ]
+    },
+    //Barghest ID 103
+    {
+        id: 103,
+        nome: "Barghest",
+        plano: planosData.tenebris,
+        imagemCard: "images/cards/Barghest.jpg",
+        imagemWide: "images/banner/Barghest.jpg",
+        descrição: `Texto`,
+        arte: "Nome do Artista",
+        paginaartista: "Link do Artista",
+        caracteristicas: {
+            tipo: "Humanoide",
+            idade: `Texto`,
+            tamanho: `Texto`,
+            velocidade: `Texto`,
+            linguagem: `Texto`,
+        },
+        tracosComuns: [
+            {
+                nome: "Traço Comum Exemplo",
+                descrição: `Texto`
+            }
+        ],
+        subRacas: [
+            {
+                tipo: "semDescricao",
+                nome: "Subraça Sem Descrição Exemplo",
+                tracos: [
+                    {
+                        nome: "Nome do Traço",
+                        descrição: `Texto`
+                    }
+                ]
+            },
+            {
+                tipo: "comDescricao",
+                nome: "Subraça Com Descrição Exemplo",
+                descrição: `Texto`,
+                tracos: [
+                    {
+                        nome: "Nome do Traço",
+                        descrição: `Texto`
+                    }
+                ]
+            }
+        ]
+    },
+    //Manticora ID 104
+    {
+        id: 104,
+        nome: "Manticora",
+        plano: planosData.tenebris,
+        imagemCard: "images/cards/Manticora.jpg",
+        imagemWide: "images/banner/Manticora.jpg",
+        descrição: `Texto`,
+        arte: "Nome do Artista",
+        paginaartista: "Link do Artista",
+        caracteristicas: {
+            tipo: "Humanoide",
+            idade: `Texto`,
+            tamanho: `Texto`,
+            velocidade: `Texto`,
+            linguagem: `Texto`,
+        },
+        tracosComuns: [
+            {
+                nome: "Traço Comum Exemplo",
+                descrição: `Texto`
+            }
+        ],
+        subRacas: [
+            {
+                tipo: "semDescricao",
+                nome: "Subraça Sem Descrição Exemplo",
+                tracos: [
+                    {
+                        nome: "Nome do Traço",
+                        descrição: `Texto`
+                    }
+                ]
+            },
+            {
+                tipo: "comDescricao",
+                nome: "Subraça Com Descrição Exemplo",
+                descrição: `Texto`,
+                tracos: [
+                    {
+                        nome: "Nome do Traço",
+                        descrição: `Texto`
+                    }
+                ]
+            }
+        ]
+    },
+    //Basilisco ID 105
+    {
+        id: 105,
+        nome: "Basilisco",
+        plano: planosData.tenebris,
+        imagemCard: "images/cards/Basilisco.jpg",
+        imagemWide: "images/banner/Basilisco.jpg",
+        descrição: `Texto`,
+        arte: "Nome do Artista",
+        paginaartista: "Link do Artista",
+        caracteristicas: {
+            tipo: "Humanoide",
+            idade: `Texto`,
+            tamanho: `Texto`,
+            velocidade: `Texto`,
+            linguagem: `Texto`,
+        },
+        tracosComuns: [
+            {
+                nome: "Traço Comum Exemplo",
+                descrição: `Texto`
+            }
+        ],
+        subRacas: [
+            {
+                tipo: "semDescricao",
+                nome: "Subraça Sem Descrição Exemplo",
+                tracos: [
+                    {
+                        nome: "Nome do Traço",
+                        descrição: `Texto`
+                    }
+                ]
+            },
+            {
+                tipo: "comDescricao",
+                nome: "Subraça Com Descrição Exemplo",
+                descrição: `Texto`,
+                tracos: [
+                    {
+                        nome: "Nome do Traço",
+                        descrição: `Texto`
+                    }
+                ]
+            }
+        ]
+    },
+    //Daemon ID 106
+    {
+        id: 106,
+        nome: "Daemon",
+        plano: planosData.tenebris,
+        imagemCard: "images/cards/Daemon.jpg",
+        imagemWide: "images/banner/Daemon.jpg",
+        descrição: `Texto`,
+        arte: "Nome do Artista",
+        paginaartista: "Link do Artista",
+        caracteristicas: {
+            tipo: "Humanoide",
+            idade: `Texto`,
+            tamanho: `Texto`,
+            velocidade: `Texto`,
+            linguagem: `Texto`,
+        },
+        tracosComuns: [
+            {
+                nome: "Traço Comum Exemplo",
+                descrição: `Texto`
+            }
+        ],
+        subRacas: [
+            {
+                tipo: "semDescricao",
+                nome: "Subraça Sem Descrição Exemplo",
+                tracos: [
+                    {
+                        nome: "Nome do Traço",
+                        descrição: `Texto`
+                    }
+                ]
+            },
+            {
+                tipo: "comDescricao",
+                nome: "Subraça Com Descrição Exemplo",
+                descrição: `Texto`,
+                tracos: [
+                    {
+                        nome: "Nome do Traço",
+                        descrição: `Texto`
+                    }
+                ]
+            }
+        ]
+    },
+/* #endregion */
 
-
-
-
-
-
-
-    
+//Outros    
+    /* 
     //Exemplo de Raça
     {
-        id: 99,
+        id: 0,
         nome: "Exemplo de Raça",
+        plano: planosData.terra,
         imagemCard: "images/cards/Temporario.jpg",
         imagemWide: "images/banner/Temporario.jpg",
         descrição: `Texto`,
@@ -859,4 +1160,5 @@ const racasData = [
             }
         ]
     }
+    */
 ];

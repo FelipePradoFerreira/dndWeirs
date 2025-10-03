@@ -6,7 +6,14 @@ Uma aplicação web para organizar e exibir conteúdo homebrew de Dungeons & Dra
 
 ## 📋 Changelog
 
-### Versão 0.6.1 (Atual)
+### Versão 0.6.2 (Atual)
+- **Data:**02/10/2025
+- **Melhorias:**
+  - Adição de divisão das espécies por planos na página de raças.
+  - Modificação do script da página raças para manter o usuário no ponto y em que parou antes de clicar para exibir detalhes de raça.
+  - Adição das bases para as raças de Tenebris.
+
+### Versão 0.6.1
 - **Data:**02/10/2025
 - **Melhorias:**
   - Adição dos Cranoris.

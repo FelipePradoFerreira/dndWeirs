@@ -1,28 +1,69 @@
-// Função para carregar a lista de raças
+// Função para carregar a lista de raças organizada por planos
 function carregarListaRacas() {
     const container = document.getElementById('cards-container');
+    container.innerHTML = ''; // Limpa o container
     
+    // Agrupa raças por plano
+    const racasPorPlano = {};
     racasData.forEach(raca => {
-        const card = document.createElement('div');
-        card.className = 'raca-card';
-        card.onclick = () => mostrarDetalhesRaca(raca.id);
+        if (!racasPorPlano[raca.plano]) {
+            racasPorPlano[raca.plano] = [];
+        }
+        racasPorPlano[raca.plano].push(raca);
+    });
+    
+    // Cria seções para cada plano
+    Object.keys(racasPorPlano).forEach(plano => {
+        const racasDoPlano = racasPorPlano[plano];
         
-        card.innerHTML = `
-            <div class="raca-card-image">
-                <img src="${raca.imagemCard}" alt="${raca.nome}" class="raca-card-img">
-            </div>
-            <div class="raca-card-content">
-                <h3>${raca.nome}</h3>
-                <p>${raca.descrição.substring(0, 100)}...</p>
-            </div>
-        `;
+        // Cria o cabeçalho do plano
+        const planoHeader = document.createElement('div');
+        planoHeader.className = 'plano-header';
+        planoHeader.innerHTML = `<h2>${plano}</h2>`;
+        container.appendChild(planoHeader);
         
-        container.appendChild(card);
+        // Cria container para os cards do plano
+        const planoContainer = document.createElement('div');
+        planoContainer.className = 'plano-cards-container';
+        
+        // Adiciona os cards das raças deste plano
+        racasDoPlano.forEach(raca => {
+            const card = document.createElement('div');
+            card.className = 'raca-card';
+            card.onclick = () => mostrarDetalhesRaca(raca.id);
+            card.tabIndex = 0; // Torna o card focável para acessibilidade
+            
+            card.innerHTML = `
+                <div class="raca-card-image">
+                    <img src="${raca.imagemCard}" alt="${raca.nome}" class="raca-card-img">
+                </div>
+                <div class="raca-card-content">
+                    <h3>${raca.nome}</h3>
+                    <p>${raca.descrição.substring(0, 100)}...</p>
+                </div>
+            `;
+            
+            // Adiciona suporte a Enter/Space para acessibilidade
+            card.addEventListener('keydown', (event) => {
+                if (event.key === 'Enter' || event.key === ' ') {
+                    event.preventDefault();
+                    mostrarDetalhesRaca(raca.id);
+                }
+            });
+            
+            planoContainer.appendChild(card);
+        });
+        
+        container.appendChild(planoContainer);
     });
 }
 
+let scrollPosition = 0;
+
 // Função para mostrar detalhes da raça
 function mostrarDetalhesRaca(id) {
+    scrollPosition = window.pageYOffset || document.documentElement.scrollTop;
+
     const raca = racasData.find(r => r.id === id);
     if (!raca) return;
     
@@ -40,7 +81,7 @@ function mostrarDetalhesRaca(id) {
     detalhesSection.innerHTML = `
         <div class="raca-header">
             <h2 class="raca-titulo">${raca.nome}</h2>
-            <button class="btn-fechar" onclick="voltarParaLista()">×</button>
+            <button class="btn-fechar" onclick="voltarParaLista()" aria-label="Fechar detalhes">×</button>
         </div>
         
         <div class="raca-imagem-wide">
@@ -138,14 +179,40 @@ function mostrarDetalhesRaca(id) {
         </div>
     `;
     
+    // Foca no botão de fechar para acessibilidade
+    const btnFechar = detalhesSection.querySelector('.btn-fechar');
+    if (btnFechar) {
+        btnFechar.focus();
+    }
+    
     // Rolagem suave para o topo
     window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
 // Função para voltar à lista
 function voltarParaLista() {
-    document.getElementById('detalhes-raca').style.display = 'none';
-    document.getElementById('lista-racas').style.display = 'block';
+    const detalhesSection = document.getElementById('detalhes-raca');
+    const listaRacas = document.getElementById('lista-racas');
+    
+    if (detalhesSection && listaRacas) {
+        detalhesSection.style.display = 'none';
+        listaRacas.style.display = 'block';
+        
+        // Foca no início da lista para acessibilidade
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+}
+
+// Função para configurar o evento da tecla Esc
+function configurarTeclaEsc() {
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' || event.keyCode === 27) {
+            const detalhesSection = document.getElementById('detalhes-raca');
+            if (detalhesSection && detalhesSection.style.display === 'block') {
+                voltarParaLista();
+            }
+        }
+    });
 }
 
 // Configura o clique fora da área de detalhes para fechar
@@ -155,12 +222,28 @@ document.addEventListener('click', function(event) {
     
     // Se a seção de detalhes está visível E o clique foi fora dela
     // E não foi em um card da lista
-    if (detalhesSection.style.display === 'block' && 
+    if (detalhesSection && detalhesSection.style.display === 'block' && 
         !detalhesSection.contains(event.target) &&
         !event.target.closest('.raca-card')) {
         voltarParaLista();
     }
 });
 
-// Carrega a lista quando a página abre
-document.addEventListener('DOMContentLoaded', carregarListaRacas);
+// Carrega a lista quando a página abre e configura a tecla Esc
+document.addEventListener('DOMContentLoaded', function() {
+    carregarListaRacas();
+    configurarTeclaEsc();
+});
+
+function voltarParaLista() {
+    const detalhesSection = document.getElementById('detalhes-raca');
+    const listaRacas = document.getElementById('lista-racas');
+    
+    if (detalhesSection && listaRacas) {
+        detalhesSection.style.display = 'none';
+        listaRacas.style.display = 'block';
+        
+        // Restaura a posição instantaneamente
+        window.scrollTo({ top: scrollPosition, behavior: 'instant' });
+    }
+}
