@@ -9,7 +9,7 @@ Uma aplicação web para organizar e exibir conteúdo homebrew de Dungeons & Dra
 ### Versão 0.6.4 (Atual)
 - **Data:**02/10/2025
 - **Melhorias:**
-  - Adição do botão de expansão das raças.
+  - Alteração dos scripts de raça para adição do botão de expansão.
 
 ### Versão 0.6.3
 - **Data:**02/10/2025
