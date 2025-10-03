@@ -230,6 +230,74 @@
     text-decoration: none;
 }
 
+/* Estilos para sistema de expandir/recolher planos */
+.plano-container {
+    position: relative;
+    margin-bottom: 2rem;
+}
+
+.plano-cards-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 2rem;
+    padding: 1rem 0;
+    position: relative;
+}
+
+.plano-cards-container.limitado {
+    max-height: 900px; /* Ajuste este valor se necessário */
+    overflow: hidden;
+    mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+    -webkit-mask-image: linear-gradient(to bottom, black 70%, transparent 100%);
+}
+
+.plano-expandir {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 1rem;
+    padding: 1rem;
+    position: relative;
+}
+
+.btn-expandir {
+    background: #4a5568;
+    color: white;
+    border: none;
+    border-radius: 50%;
+    width: 50px;
+    height: 50px;
+    font-size: 1.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+    z-index: 10;
+    margin-bottom: 0.5rem;
+}
+
+.btn-expandir:hover {
+    background: #2d3748;
+    transform: scale(1.1);
+}
+
+.btn-expandir.expandido {
+    transform: rotate(180deg);
+}
+
+.btn-expandir.expandido:hover {
+    transform: rotate(180deg) scale(1.1);
+}
+
+.contador-raças {
+    color: #a0aec0;
+    font-size: 0.9rem;
+    text-align: center;
+}
+
 /* Estilos para organização por planos */
 .plano-header {
     width: 100%;

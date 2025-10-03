@@ -1,61 +1,161 @@
-// Função para carregar a lista de raças organizada por planos
 function carregarListaRacas() {
     const container = document.getElementById('cards-container');
-    container.innerHTML = ''; // Limpa o container
+    if (!container) {
+        console.error('Container de raças não encontrado');
+        return;
+    }
     
-    // Agrupa raças por plano
+    container.innerHTML = '';
+    
     const racasPorPlano = {};
+    
     racasData.forEach(raca => {
-        if (!racasPorPlano[raca.plano]) {
-            racasPorPlano[raca.plano] = [];
+        if (raca.plano) {
+            if (!racasPorPlano[raca.plano]) {
+                racasPorPlano[raca.plano] = [];
+            }
+            racasPorPlano[raca.plano].push(raca);
         }
-        racasPorPlano[raca.plano].push(raca);
     });
     
-    // Cria seções para cada plano
-    Object.keys(racasPorPlano).forEach(plano => {
-        const racasDoPlano = racasPorPlano[plano];
+    const planos = Object.keys(racasPorPlano);
+    if (planos.length === 0) {
+        container.innerHTML = '<p>Nenhuma raça encontrada.</p>';
+        return;
+    }
+    
+    planos.forEach(planoKey => {
+        const racasDoPlano = racasPorPlano[planoKey];
+        const nomePlano = planoKey.charAt(0).toUpperCase() + planoKey.slice(1);
         
-        // Cria o cabeçalho do plano
+        // Cria container principal do plano
+        const planoContainer = document.createElement('div');
+        planoContainer.className = 'plano-container';
+        
+        // Cria cabeçalho do plano
         const planoHeader = document.createElement('div');
         planoHeader.className = 'plano-header';
-        planoHeader.innerHTML = `<h2>${plano}</h2>`;
-        container.appendChild(planoHeader);
+        planoHeader.innerHTML = `<h2>Raças de ${nomePlano}</h2>`;
+        planoContainer.appendChild(planoHeader);
         
-        // Cria container para os cards do plano
-        const planoContainer = document.createElement('div');
-        planoContainer.className = 'plano-cards-container';
+        // Cria container para os cards
+        const cardsContainer = document.createElement('div');
+        cardsContainer.className = 'plano-cards-container';
+        cardsContainer.id = `cards-${planoKey}`;
         
-        // Adiciona os cards das raças deste plano
-        racasDoPlano.forEach(raca => {
-            const card = document.createElement('div');
-            card.className = 'raca-card';
-            card.onclick = () => mostrarDetalhesRaca(raca.id);
-            card.tabIndex = 0; // Torna o card focável para acessibilidade
+        // Determina se precisa do sistema de expandir (APENAS se tiver MAIS de 6 raças)
+        const precisaExpandir = racasDoPlano.length > 6;
+        
+        // Se precisa expandir, aplica a classe limitado e mostra 6 raças
+        if (precisaExpandir) {
+            cardsContainer.classList.add('limitado');
+            // Mostra as primeiras 6 raças
+            const racasParaMostrar = racasDoPlano.slice(0, 6);
+            racasParaMostrar.forEach(raca => {
+                const card = criarCardRaca(raca);
+                cardsContainer.appendChild(card);
+            });
+        } else {
+            // Mostra TODAS as raças (6 ou menos)
+            racasDoPlano.forEach(raca => {
+                const card = criarCardRaca(raca);
+                cardsContainer.appendChild(card);
+            });
+        }
+        
+        planoContainer.appendChild(cardsContainer);
+        
+        // Adiciona botão de expandir APENAS se tiver MAIS de 6 raças
+        if (precisaExpandir) {
+            const expandirSection = document.createElement('div');
+            expandirSection.className = 'plano-expandir';
             
-            card.innerHTML = `
-                <div class="raca-card-image">
-                    <img src="${raca.imagemCard}" alt="${raca.nome}" class="raca-card-img">
-                </div>
-                <div class="raca-card-content">
-                    <h3>${raca.nome}</h3>
-                    <p>${raca.descrição.substring(0, 100)}...</p>
-                </div>
-            `;
+            const btnExpandir = document.createElement('button');
+            btnExpandir.className = 'btn-expandir';
+            btnExpandir.innerHTML = '↓';
+            btnExpandir.setAttribute('aria-label', `Expandir raças de ${nomePlano}`);
             
-            // Adiciona suporte a Enter/Space para acessibilidade
-            card.addEventListener('keydown', (event) => {
-                if (event.key === 'Enter' || event.key === ' ') {
-                    event.preventDefault();
-                    mostrarDetalhesRaca(raca.id);
-                }
+            const contador = document.createElement('div');
+            contador.className = 'contador-raças';
+            contador.textContent = `+${racasDoPlano.length - 6} raças restantes`;
+            
+            btnExpandir.addEventListener('click', () => {
+                toggleExpansaoPlano(planoKey, cardsContainer, btnExpandir, contador, racasDoPlano);
             });
             
-            planoContainer.appendChild(card);
-        });
+            expandirSection.appendChild(btnExpandir);
+            expandirSection.appendChild(contador);
+            planoContainer.appendChild(expandirSection);
+        }
         
         container.appendChild(planoContainer);
     });
+}
+
+// Função auxiliar para criar cards de raça
+function criarCardRaca(raca) {
+    const card = document.createElement('div');
+    card.className = 'raca-card';
+    card.onclick = () => mostrarDetalhesRaca(raca.id);
+    card.tabIndex = 0;
+    
+    card.innerHTML = `
+        <div class="raca-card-image">
+            <img src="${raca.imagemCard}" alt="${raca.nome}" class="raca-card-img">
+        </div>
+        <div class="raca-card-content">
+            <h3>${raca.nome}</h3>
+            <p>${raca.descrição.substring(0, 100)}...</p>
+        </div>
+    `;
+    
+    card.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            mostrarDetalhesRaca(raca.id);
+        }
+    });
+    
+    return card;
+}
+
+// Função para expandir/recolher plano
+function toggleExpansaoPlano(planoKey, cardsContainer, btnExpandir, contador, todasRacas) {
+    const estaExpandido = !cardsContainer.classList.contains('limitado');
+    
+    if (estaExpandido) {
+        // Recolher - mostra apenas 6 primeiras
+        cardsContainer.classList.add('limitado');
+        btnExpandir.classList.remove('expandido');
+        contador.textContent = `+${todasRacas.length - 6} raças restantes`;
+        contador.style.display = 'block';
+        
+        // Remove cards extras (mantém apenas os 6 primeiros)
+        const cards = cardsContainer.querySelectorAll('.raca-card');
+        cards.forEach((card, index) => {
+            if (index >= 6) {
+                card.remove();
+            }
+        });
+        
+        // Rola suavemente para a seção do plano
+        cardsContainer.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    } else {
+        // Expandir - mostra todas as raças
+        cardsContainer.classList.remove('limitado');
+        btnExpandir.classList.add('expandido');
+        contador.style.display = 'none';
+        
+        // Adiciona TODAS as raças restantes
+        const cardsAtuais = cardsContainer.querySelectorAll('.raca-card').length;
+        if (cardsAtuais < todasRacas.length) {
+            const racasRestantes = todasRacas.slice(cardsAtuais);
+            racasRestantes.forEach(raca => {
+                const card = criarCardRaca(raca);
+                cardsContainer.appendChild(card);
+            });
+        }
+    }
 }
 
 let scrollPosition = 0;
