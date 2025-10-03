@@ -6,7 +6,13 @@ Uma aplicação web para organizar e exibir conteúdo homebrew de Dungeons & Dra
 
 ## 📋 Changelog
 
-### Versão 0.6.2 (Atual)
+### Versão 0.6.3 (Atual)
+- **Data:**02/10/2025
+- **Melhorias:**
+  - Finalização das Raças de Tenebris.
+  - Adição da raça Celestial.
+
+### Versão 0.6.2
 - **Data:**02/10/2025
 - **Melhorias:**
   - Adição de divisão das espécies por planos na página de raças.

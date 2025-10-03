@@ -1,6 +1,7 @@
 const planosData = {
     terra: "Terra",
-    tenebris: "Tenebris"
+    tenebris: "Tenebris",
+    outros: "Outros"
 };
 
 // Banco de dados das raças
@@ -834,44 +835,51 @@ const racasData = [
         plano: planosData.tenebris,
         imagemCard: "images/cards/Cambion.jpg",
         imagemWide: "images/banner/Cambion.jpg",
-        descrição: `Texto`,
-        arte: "Nome do Artista",
-        paginaartista: "Link do Artista",
+        descrição: `Criados à semelhança do primeiro imperador de Tenebris, cambions possuem características humanóides acentuadas, diferenciando-se dos humanos principalmente 
+        por suas orelhas pontudas e peles geralmente pálidas.
+        <br>Seus corpos são imortais e perecem apenas por fatores externos, entretanto a aparência de um cambion pode envelhecer em um processo lento, de acordo com seu estado mental.`,
+        arte: "Chawak",
+        paginaartista: "https://www.artstation.com/ckcsdk",
         caracteristicas: {
             tipo: "Humanoide",
-            idade: `Texto`,
-            tamanho: `Texto`,
-            velocidade: `Texto`,
-            linguagem: `Texto`,
+            idade: `São normalmente imortais, mas seus corpos podem envelhecer após longos períodos em estados mentais negativos.`,
+            tamanho: `Médio (entre 1,5m - 1,9m) ou Pequeno (entre 0,5m - 1,2m), escolhido quando você seleciona essa espécie.`,
+            velocidade: `Você tem um deslocamento base de 30 ft.`,
+            linguagem: `Você conhece os idiomas Comum e Infernal.`,
         },
+        incrementoHabilidade: "Aumente sua Sabedoria em 2 e outro atributo à sua escolha em 2.",
         tracosComuns: [
             {
-                nome: "Traço Comum Exemplo",
-                descrição: `Texto`
-            }
-        ],
-        subRacas: [
-            {
-                tipo: "semDescricao",
-                nome: "Subraça Sem Descrição Exemplo",
-                tracos: [
-                    {
-                        nome: "Nome do Traço",
-                        descrição: `Texto`
-                    }
-                ]
+                nome: "Visao no Escuro",
+                descrição: `Você pode enxergar em até 60 ft na escuridão não mágica. Você não consegue distinguir cores no escuro.`
             },
             {
-                tipo: "comDescricao",
-                nome: "Subraça Com Descrição Exemplo",
-                descrição: `Texto`,
-                tracos: [
-                    {
-                        nome: "Nome do Traço",
-                        descrição: `Texto`
-                    }
-                ]
-            }
+                nome: "Afinidade Mística",
+                descrição: `Você tem proficiência na habilidade Arcanismo. Além disso, você pode lançar a magia Detectar Magia uma vez por dia, sem necessidade de componentes 
+                materiais.`
+            },
+            {
+                nome: "Curiosidade Inata",
+                descrição: `Você pode aprender um truque de qualquer lista de magias. A habilidade de conjuração para esse truque é Sabedoria.`
+            },
+            {
+                nome: "Herança Primordial",
+                descrição: `A conexão com o Primeiro Imperador desperta em momentos de necessidade. Você pode escolher ganhar vantagem em um teste de Inteligência, Sabedoria ou 
+                Carisma uma vez por descanso longo.`
+            },
+            {
+                nome: "Distorção Arcana (Opção 1)",
+                descrição: `Sua proeza mística torna mais difícil resistir aos efeitos de suas magias. Aumente o CD dos testes de resistências de suas magias em 1 ponto.`
+            },
+            {
+                nome: "Essência Caótica (Opção 2)",
+                descrição: `O caos em seu interior se manifesta, transformando-o em uma criatura das trevas. Uma vez por dia, partir do 3º nível, você pode canalizar brevemente a 
+                essência sombria de sua origem, assumindo aspectos de uma criatura das trevas. Como uma ação bônus, você pode se transformar, ganhando os seguintes benefícios 
+                por 1 minuto:
+                <br>• Seus ataques causam 1d4 de dano necrótico adicional.
+                <br>• Sua visão no escuro é ampliada para visão no escuro superior.
+                <br>• Sempre que um inimigo dentro de 10 pés de você errar um ataque corpo a corpo contra você, ele recebe dano necrótico igual ao seu bônus de proficiência.`
+            },
         ]
     },
     //Daeva ID 102
@@ -881,43 +889,49 @@ const racasData = [
         plano: planosData.tenebris,
         imagemCard: "images/cards/Daeva.jpg",
         imagemWide: "images/banner/Daeva.jpg",
-        descrição: `Texto`,
-        arte: "Nome do Artista",
-        paginaartista: "Link do Artista",
+        descrição: `Quando jovens, são conhecidos por suas brincadeiras exageradas, que podem resultar em consequências não calculadas.
+        <br>A semelhança que possuem com os diabretes, principalmente quando jovens, os faz acreditarem que, em algum momento, ambas as espécies foram uma. Por muitas vezes, 
+        essa crença faz com que as outras raças os vejam como inferiores, já que diabretes são consideradas criaturas incivilizadas.`,
+        arte: "Mike Jordana",
+        paginaartista: "https://www.artstation.com/mikejordana",
         caracteristicas: {
             tipo: "Humanoide",
-            idade: `Texto`,
-            tamanho: `Texto`,
-            velocidade: `Texto`,
-            linguagem: `Texto`,
+            idade: `Daevas demoram para amadurecer, mas ao atingir os 20 anos, se tornam adultos rapidamente e mantém a juventude pela eternidade, envelhecendo apenas em 
+            circunstâncias similares aos cambions.`,
+            tamanho: `Médio (entre 1,5m - 1,9m) ou Pequeno (entre 0,5m - 1,2m), escolhido quando você seleciona essa espécie.`,
+            velocidade: `Você tem um deslocamento base de 30 ft.`,
+            linguagem: `Você conhece os idiomas Comum e Infernal.`,
         },
+        incrementoHabilidade: "Aumente sua Destreza em 2 pontos e outro atributo à sua escolha em 2.",
         tracosComuns: [
             {
-                nome: "Traço Comum Exemplo",
-                descrição: `Texto`
-            }
-        ],
-        subRacas: [
-            {
-                tipo: "semDescricao",
-                nome: "Subraça Sem Descrição Exemplo",
-                tracos: [
-                    {
-                        nome: "Nome do Traço",
-                        descrição: `Texto`
-                    }
-                ]
+                nome: "Escapista Veloz",
+                descrição: `Se você sofrer dano, pode usar sua reação para mover-se até 10 pés sem provocar ataques de oportunidade.`
             },
             {
-                tipo: "comDescricao",
-                nome: "Subraça Com Descrição Exemplo",
-                descrição: `Texto`,
-                tracos: [
-                    {
-                        nome: "Nome do Traço",
-                        descrição: `Texto`
-                    }
-                ]
+                nome: "Visão no Escuro",
+                descrição: `Você pode enxergar em até 60 ft na escuridão não mágica. Você não consegue distinguir cores no escuro.`
+            },
+            {
+                nome: "Afinidade Maliciosa",
+                descrição: `Você tem proficiência na habilidade Enganação ou Prestidigitação (sua escolha). Caso já tenha proficiência com a habilidade escolhida, dobre o bônus 
+                de proficiência.`
+            },
+            {
+                nome: "Passagem Ágil",
+                descrição: `Você ignora terrenos difíceis causados por obstáculos naturais, como folhagem densa, pedras soltas ou lama.`
+            },
+            {
+                nome: "Caminhante Sombrio (Opção 1)",
+                descrição: `Uma vez por dia, sua proeza em espreitar-se permite que role 1d6 adicional e some com o resultado de um teste de furtividade ou prestidigitação.`
+            },
+            {
+                nome: "Cicatrizes da Escuridão (Opção 2)",
+                descrição: `Eventos traumáticos ou experimentos místicos podem gerar mutações que fortalecem o seu corpo. A partir do 3º nível, você pode ativar essa habilidade como uma ação bônus, ganhando os seguintes benefícios por 1 minuto:
+                <br>• Você adiciona +2 ao dano de ataques corpo a corpo.
+                <br>• Voce tem vantagem em testes de Força.
+                <br>• Você adquire um deslocamento adicional de 10 pés.
+                Uma vez ativada, você não pode usá-la novamente até completar um descanso longo.`
             }
         ]
     },
@@ -928,43 +942,52 @@ const racasData = [
         plano: planosData.tenebris,
         imagemCard: "images/cards/Barghest.jpg",
         imagemWide: "images/banner/Barghest.jpg",
-        descrição: `Texto`,
-        arte: "Nome do Artista",
-        paginaartista: "Link do Artista",
+        descrição: `Os barghests possuem uma natureza nômade, adaptados a um estilo de vida que exige resistência, velocidade e astúcia. São conhecidos por sua capacidade de caça 
+        impecável, o que geralmente atrai contratos com o objetivo de rastrear e capturar bestas raras. Uma vez que um Barghest coloca os olhos em uma presa, é quase impossível 
+        escapar do seu alcance.
+        <br>Sua sociedade é marcada pela lealdade. Os Barghests são ferozes protetores de seus aliados e, especialmente, de seus companheiros mais próximos.
+        <br>Sua juventude dura pouco, e antes que alcancem a idade adulta, já são caçadores formidáveis. Após essa fase de crescimento acelerado, eles entram em uma etapa de 
+        adaptação. Aqueles que escolhem a vida sedentária começam a sofrer com o envelhecimento de seus corpos, enquanto os que permanecem em constante movimento permanecem jovens 
+        por muito mais tempo.`,
+        arte: "Ryota Murayama",
+        paginaartista: "https://www.artstation.com/ovopack",
         caracteristicas: {
             tipo: "Humanoide",
-            idade: `Texto`,
-            tamanho: `Texto`,
-            velocidade: `Texto`,
-            linguagem: `Texto`,
+            idade: `Barghests atingem maturidade rapidamente, e seu envelhecimento depende do quão ativo é durante o restante de sua vida.`,
+            tamanho: `Seu tamanho é médio (entre 1,75m - 2,1m).`,
+            velocidade: `Você tem um deslocamento base de 35 ft.`,
+            linguagem: `Você conhece os idiomas Comum e Infernal.`,
         },
+        incrementoHabilidade: "Aumente sua Força em 2 e outro atributo à sua escolha em 2.",
         tracosComuns: [
             {
-                nome: "Traço Comum Exemplo",
-                descrição: `Texto`
-            }
-        ],
-        subRacas: [
-            {
-                tipo: "semDescricao",
-                nome: "Subraça Sem Descrição Exemplo",
-                tracos: [
-                    {
-                        nome: "Nome do Traço",
-                        descrição: `Texto`
-                    }
-                ]
+                nome: "Presas Alongadas",
+                descrição: `Como uma ação bônus, você pode usar suas presas alongadas para desferir um ataque desarmado. Se você acertar com suas presas, você pode causar dano 
+                perfurante igual a 1d6 + seu modificador de Força.`
             },
             {
-                tipo: "comDescricao",
-                nome: "Subraça Com Descrição Exemplo",
-                descrição: `Texto`,
-                tracos: [
-                    {
-                        nome: "Nome do Traço",
-                        descrição: `Texto`
-                    }
-                ]
+                nome: "Visão no Escuro",
+                descrição: `Você pode enxergar em até 60 ft na escuridão não mágica. Você não consegue distinguir cores no escuro.`
+            },
+            {
+                nome: "Vigor do Nômade",
+                descrição: `Você é resistente aos desafios da vida nômade. Você tem vantagem em testes de resistência contra os efeitos de condições extremas, como frio ou calor 
+                intensos, e não sofre penalidades por não ter acesso a água ou comida por até 48 horas.`
+            },
+            {
+                nome: "Intuição Primitiva",
+                descrição: `Você nunca pode ser surpreendido enquanto estiver consciente, e tem vantagem em testes de iniciativa.`
+            },
+            {
+                nome: "Instinto Oportunista",
+                descrição: `Você pode realizar ataques de oportunidade contra criaturas que entrem no seu alcance.`
+            },
+            {
+                nome: "Alvo Marcado",
+                descrição: `Uma vez por dia, a partir do 3° nível, como uma ação bônus, você pode escolher uma criatura que você possa ver a até 60 pés como seu alvo. Por 1 
+                minuto, você adquire um deslocamento adicional de 10 pés se estiver indo na direção do seu alvo marcado, além disso, você tem vantagem em testes de Percepção 
+                para rastrear essa criatura, caso esteja furtiva, e em jogadas de ataque contra ela. Se derrotar uma criatura enquanto essa característica estiver ativa, pode 
+                escolher outro alvo no alcance.`
             }
         ]
     },
@@ -975,43 +998,54 @@ const racasData = [
         plano: planosData.tenebris,
         imagemCard: "images/cards/Manticora.jpg",
         imagemWide: "images/banner/Manticora.jpg",
-        descrição: `Texto`,
-        arte: "Nome do Artista",
-        paginaartista: "Link do Artista",
+        descrição: `As manticoras são felinos humanóides ágeis, habitantes dos vastos desertos de Tenebris próximos à capital. Sua sociedade prospera graças à exploração de pedras 
+        raras e minerais, que alimentam relações comerciais com outras espécies do plano demoníaco. Conhecidas por sua habilidade natural para negociações, as manticoras são 
+        estrategistas econômicos que transformaram seu deserto em um centro de trocas valiosas, ao mesmo tempo em que protegem rigorosamente seu território.
+        <br>A cada 90 anos, participam do Ritual de Rejuvenescimento para recuperar vitalidade. Essa prática reflete sua crença de que as forças do deserto são essenciais para 
+        sua sobrevivência e poder.
+        <br>As manticoras preferem viver de forma isolada, valorizando sua independência e a conexão com sua terra. Apesar disso, mantêm relações diplomáticas cuidadosas com 
+        outras espécies. Sua sagacidade e adaptabilidade as tornam uma das espécies mais respeitadas e cautelosamente observadas de Tenebris.`,
+        arte: "Ksenia Kiseleva",
+        paginaartista: "https://www.artstation.com/faavesa",
         caracteristicas: {
             tipo: "Humanoide",
-            idade: `Texto`,
-            tamanho: `Texto`,
-            velocidade: `Texto`,
-            linguagem: `Texto`,
+            idade: `Manticoras possuem vida eterna, desde que repitam o ritual de rejuvelhecimento a cada 90 anos.`,
+            tamanho: `Médio (entre 1,5m - 1,9m) ou Pequeno (entre 0,5m - 1,2m), escolhido quando você seleciona essa espécie.`,
+            velocidade: `Você tem um deslocamento base de 30 ft.`,
+            linguagem: `Você conhece Comum e Infernal.`,
         },
+        incrementoHabilidade: "Aumente seu Carisma em 2 pontos e outro atributo à sua escolha em 2.",
         tracosComuns: [
             {
-                nome: "Traço Comum Exemplo",
-                descrição: `Texto`
-            }
-        ],
-        subRacas: [
-            {
-                tipo: "semDescricao",
-                nome: "Subraça Sem Descrição Exemplo",
-                tracos: [
-                    {
-                        nome: "Nome do Traço",
-                        descrição: `Texto`
-                    }
-                ]
+                nome: "Saltador Ágil",
+                descrição: `Sua agilidade permite realizar saltos impressionantes. Você pode pular uma distância adicional igual a 10 pés em qualquer direção, e não sofre dano de 
+                queda para os primeiros 20 pés.`
             },
             {
-                tipo: "comDescricao",
-                nome: "Subraça Com Descrição Exemplo",
-                descrição: `Texto`,
-                tracos: [
-                    {
-                        nome: "Nome do Traço",
-                        descrição: `Texto`
-                    }
-                ]
+                nome: "Caminhante do Deserto",
+                descrição: `Seus passos não emitem som em terrenos normais e você é imune aos efeitos de terreno difícil causado por areia ou pedras.`
+            },
+            {
+                nome: "Visão no Escuro Felina",
+                descrição: `Você consegue enxergar até 120 ft na penumbra como se fosse luz plena e no escuro como se fosse penumbra. Você consegue discernir cores no escuro.`
+            },
+            {
+                nome: "Mestre da Barganha",
+                descrição: `Você possui vantagem em testes de Carisma (Persuasão) para conseguir descontos em lojas e para conseguir vender itens por um valor maior do que o 
+                normal, desde que o vendedor não perceba você como uma ameaça ou inimigo.`
+            },
+            {
+                nome: "Intuição Astuta",
+                descrição: `Sempre que você fizer um teste de Destreza(Furtividade) ou um teste de Carisma(Performance), jogue um d4 e adicione o número obtido ao teste total de 
+                habilidade.`
+            },
+            {
+                nome: "Talento Felino",
+                descrição: `Você tem proficiência nas habilidades de Furtividade e Percepção. No nível 6 você ganha aptidão em ambas as perícias.`
+            },
+            {
+                nome: "Garras Retráteis",
+                descrição: `Suas garras podem ser usadas como armas naturais. Elas causam 1d6 + seu modificador de Destreza como dano cortante e têm a propriedade de Finesse.`
             }
         ]
     },
@@ -1022,43 +1056,47 @@ const racasData = [
         plano: planosData.tenebris,
         imagemCard: "images/cards/Basilisco.jpg",
         imagemWide: "images/banner/Basilisco.jpg",
-        descrição: `Texto`,
-        arte: "Nome do Artista",
-        paginaartista: "Link do Artista",
+        descrição: `Os basiliscos são criaturas que encarnam a essência da adaptabilidade e resistência. Suas escamas únicas possuem propriedades mágicas que os tornam alvos de 
+        alquimistas, magos e caçadores. Essas escamas não só resistem a forças elementares como também se adaptam a elas, permitindo que os basiliscos se tornem praticamente 
+        imunes aos perigos naturais e sobrenaturais. Essa característica, no entanto, trouxe um fardo para sua espécie: muitos são perseguidos desde jovens, forçando-os a viver 
+        isolados ou a se tornarem guerreiros temidos, capazes de se defender de qualquer ameaça.
+        <br>Culturalmente, os basiliscos são reservados e frequentemente evitam as grandes cidades. No entanto, aqueles que escolhem viver entre as outras raças são conhecidos por 
+        sua lealdade inabalável e habilidades inigualáveis no campo de batalha.`,
+        arte: "Timi Honkanen",
+        paginaartista: "https://www.artstation.com/themefinland",
         caracteristicas: {
             tipo: "Humanoide",
-            idade: `Texto`,
-            tamanho: `Texto`,
-            velocidade: `Texto`,
-            linguagem: `Texto`,
+            idade: `Após atingirem a maturidade aos 30 anos, são incapazes de envelhecer por conta de seus corpos adaptativos`,
+            tamanho: `Basiliscos possuem corpos robustos e musculosos, com altura média entre 1,8m e 2,5m. Seu tamanho é médio.`,
+            velocidade: `Você tem um deslocamento base de 30 ft.`,
+            linguagem: `Você conhece os idiomas Comum e Infernal.`,
         },
+        incrementoHabilidade: "Aumente sua Constituição em 2 pontos e outro atributo à sua escolha em 2.",
         tracosComuns: [
             {
-                nome: "Traço Comum Exemplo",
-                descrição: `Texto`
-            }
-        ],
-        subRacas: [
-            {
-                tipo: "semDescricao",
-                nome: "Subraça Sem Descrição Exemplo",
-                tracos: [
-                    {
-                        nome: "Nome do Traço",
-                        descrição: `Texto`
-                    }
-                ]
+                nome: "Corpo Atemporal",
+                descrição: `Você é imune a efeitos mágicos de envelhecimento.`
             },
             {
-                tipo: "comDescricao",
-                nome: "Subraça Com Descrição Exemplo",
-                descrição: `Texto`,
-                tracos: [
-                    {
-                        nome: "Nome do Traço",
-                        descrição: `Texto`
-                    }
-                ]
+                nome: "Visão no Escuro Superior",
+                descrição: `Você consegue enxergar até 120 ft na penumbra como se fosse luz plena e no escuro como se fosse penumbra. Você não consegue discernir cores no escuro.`
+            },
+            {
+                nome: "Forma Poderosa",
+                descrição: `Você conta como um tamanho maior ao determinar sua capacidade de carga e o peso que pode empurrar, arrastar ou levantar.`
+            },
+            {
+                nome: "Anti-Místico (Recarga 5-6)",
+                descrição: `Quando você é atingido por um ataque de origem sobrenatural, você pode utilizar sua reação para reduzir o dano em 1d6 + modificador de Constituição. 
+                Após isso, você pode manifestar a energia na forma de vida falsa equivalente ao dano resistido. Nos niveis 6 e 12, o dado aumenta em mais 1d6.`
+            },
+            {
+                nome: "Adaptação Arcana",
+                descrição: `Durante a vida dos basiliscos, é muito comum adquirir adaptações permanentes após exposição contínua aos elementos do mundo. A partir do 3° nível, 
+                você pode escolher um tipo de dano para se tornar adaptado, com exceção de dano de Força. Você ganha os seguintes benefícios:
+                <br>• Você adquire resistência ao tipo de dano adaptado.
+                <br>• Como uma ação bônus, você pode disparar um projétil a partir da boca ou das escamas como um ataque. Num acerto, o projétil causa 1d6 + seu bônus de proficiência como dano adaptado.
+                <br>• Você pode encantar uma arma não mágica usando escamas do seu corpo. Como parte do seu primeiro ataque no turno, você canaliza sua energia vital na arma, causando um bônus de 1d6 como dano adaptado.`
             }
         ]
     },
@@ -1069,26 +1107,89 @@ const racasData = [
         plano: planosData.tenebris,
         imagemCard: "images/cards/Daemon.jpg",
         imagemWide: "images/banner/Daemon.jpg",
-        descrição: `Texto`,
-        arte: "Nome do Artista",
-        paginaartista: "Link do Artista",
+        descrição: `Os daemons são a personificação da engenhosidade mística de Tenebris. Suas origens remontam a um experimento ousado: a fusão de almas manipuladas e matéria 
+        viva. O objetivo inicial era criar soldados perfeitos, capazes de proteger seus criadores e subjugar forças divinas. No entanto, a ambição desmedida dos anjos caídos 
+        acabou fragmentando suas alianças, e o projeto foi abandonado, deixando para trás criaturas imbuídas de propósito, mas sem orientação.`,
+        arte: "Sa-Dui",
+        paginaartista: "https://www.artstation.com/sa-dui",
         caracteristicas: {
             tipo: "Humanoide",
-            idade: `Texto`,
-            tamanho: `Texto`,
-            velocidade: `Texto`,
-            linguagem: `Texto`,
+            idade: `O nascimento artificial de um Daemon garante que seus corpos estejam no ápice desde o início, mas suas mentes podem demorar para se desenvolver devido o 
+            processo de modificação espiritual.`,
+            tamanho: `Médio (entre 1,5m - 1,9m) ou Pequeno (entre 0,5m - 1,2m), escolhido quando você seleciona essa espécie`,
+            velocidade: `Você tem um deslocamento base de 30 ft.`,
+            linguagem: `Você conhece os idiomas Comum e Infernal.`,
+        },
+        incrementoHabilidade: "Escolha dois atributos e os aumente em 2 pontos.",
+        tracosComuns: [
+            {
+                nome: "Corpo Atemporal",
+                descrição: `Você é imune a efeitos mágicos de envelhecimento.`
+            },
+            {
+                nome: "Mente Inquebrável",
+                descrição: `Você tem vantagem em testes de resistência contra magias que provoquem encantamento ou confusão. Além disso, você é incapaz de dormir naturalmente ou por meios 
+                mágicos.`
+            },
+            {
+                nome: "Visão no Escuro Modificada",
+                descrição: `Você consegue enxergar até 120 ft na penumbra como se fosse luz plena e no escuro como se fosse penumbra. Você consegue discernir cores no escuro.`
+            },
+            {
+                nome: "Fisionomia Modular",
+                descrição: `Você pode escolher 2 entre os módulos abaixo. Para adicionar novos módulos, trocá-los ou fortalecê-los, é necessário um laboratório com as ferramentas 
+                Mystech específicas dessa área ou um perito conhecedor da anatomia dos daemons.
+                <br><b> Módulo de Braço.</b> Você tem um par de braços a mais e pode adicionar 1d4 no dado de acerto do seu primeiro ataque nesse turno.
+                <br><b> Módulo Aéreo.</b> Você tem deslocamento de vôo de 20 pés. Você pode usar essa característica por 1 minuto, antes de realizar um descanso curto ou longo.
+                <br><b> Módulo de Cauda.</b> Você tem uma cauda flexível capaz de agarrar criaturas como uma ação bônus.
+                <br><b> Módulo de Armadura.</b> Você adquire placas de tenebrita, ganhando +1 CA.
+                <br><b> Módulo de Transformação.</b> Você consegue usar os efeitos da magia Disguise Self. Sua transformação é física ao invés de ilusória e não pode ser detectada 
+                por meios mágicos, porém você tem desvantagem em testes de resistência. Você deve escolher uma aparência padrão ao usar essa característica.
+                <br><b> Módulo de Turbo.</b> Você possui válvulas de escape espalhadas pelos membros e ganha 10 pés de movimento.
+                `
+            },
+            {
+                nome: "Núcleo de Energia (Recarga 5-6)",
+                descrição: `Seu corpo abriga uma fonte de energia mística ou alquímica que alimenta suas habilidades. A partir do 3° nível, você pode usar essa energia para 
+                realizar um ataque carregado. Como uma ação, escolha uma criatura que você possa ver a até 60 pés. A criatura deve realizar um teste de resistência de Destreza 
+                (CD 8 + bônus de proficiência + modificador de Constituição) ou sofrer 2d8 de dano de um tipo de sua escolha quando adquire essa característica, com exceção de 
+                dano de Força. Este dano aumenta em 1d8 nos 11° e 17° níveis.`
+            }
+        ]
+    },
+/* #endregion */
+
+//Outros    
+    //Celestial ID 901
+    {
+        id: 901,
+        nome: "Celestial (Incompleto)",
+        plano: planosData.outros,
+        imagemCard: "images/cards/Celestial.jpg",
+        imagemWide: "images/banner/Celestial.jpg",
+        descrição: `Nascidos da vontade divina, os celestiais são seres criados por entidades divinas, seja com o propósito de servir o bem maior, proteger os inocentes ou 
+        cumprir missões destrutivas. Sua aparência varia amplamente, refletindo a natureza de seus criadores ou da fonte de seus poderes.`,
+        arte: "Sandara",
+        paginaartista: "https://www.deviantart.com/sandara/gallery",
+        caracteristicas: {
+            tipo: "Humanoide",
+            idade: `Celestiais envelhecem de maneira variada, dependendo do propósito que foi designado a eles. Alguns podem envelhecer lentamente, enquanto outros nascem com 
+            corpos adultos. O único aspecto comum é a imortalidade.`,
+            tamanho: `Médio (entre 1,5m - 1,9m) ou Pequeno (entre 0,5m - 1,2m), escolhido quando você seleciona essa espécie.`,
+            velocidade: `Você tem um deslocamento base de 30 ft.`,
+            linguagem: `Você conhece os idiomas Comum, e outro de sua escolha entre Celestial, Dracônico, Infernal ou Abissal.`,
         },
         tracosComuns: [
             {
-                nome: "Traço Comum Exemplo",
-                descrição: `Texto`
+                nome: "Corpo Atemporal",
+                descrição: `Você é imune a efeitos mágicos de envelhecimento.`
             }
         ],
         subRacas: [
             {
-                tipo: "semDescricao",
-                nome: "Subraça Sem Descrição Exemplo",
+                tipo: "comDescricao",
+                nome: "Asura",
+                descrição: `Basicamente o Cepit`,
                 tracos: [
                     {
                         nome: "Nome do Traço",
@@ -1098,8 +1199,19 @@ const racasData = [
             },
             {
                 tipo: "comDescricao",
-                nome: "Subraça Com Descrição Exemplo",
-                descrição: `Texto`,
+                nome: "Jotun",
+                descrição: `Basicamente o Nero/Loki`,
+                tracos: [
+                    {
+                        nome: "Nome do Traço",
+                        descrição: `Texto`
+                    }
+                ]
+            },
+            {
+                tipo: "comDescricao",
+                nome: "Cosmico",
+                descrição: `Basicamente o Noctis`,
                 tracos: [
                     {
                         nome: "Nome do Traço",
@@ -1108,10 +1220,10 @@ const racasData = [
                 ]
             }
         ]
-    },
-/* #endregion */
+    }
 
-//Outros    
+
+
     /* 
     //Exemplo de Raça
     {
