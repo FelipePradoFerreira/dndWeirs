@@ -9,7 +9,7 @@ const classesData = [
         descricaoCurta: "Mestres da energia vital que unem corpo e alma em harmonia",
         arte: "Nome do Artista",
         paginaartista: "https://exemplo.com/artista",
-
+        tituloDeSubclasse: "Trilhas Espirituais",
         secoes: [
             {
                 tipo: "descricao",
@@ -66,6 +66,25 @@ const classesData = [
                     }
                 ]
             }
+        ],
+        subclasses: [
+            {
+                id: 1,
+                nome: "Caminho do Equilíbrio",
+                descricao: "Mestres do equilíbrio entre ofensa e defesa",
+                caracteristicas: [
+                    {
+                        nivel: 3,
+                        titulo: "Equilíbrio Perfeito",
+                        descricao: "Você ganha +1 em testes de resistência quando está com pontos de vida acima da metade."
+                    },
+                    {
+                        nivel: 6,
+                        titulo: "Harmonia Ofensiva", 
+                        descricao: "Seus ataques causam +1d4 de dano quando você usa Pontos de Vita."
+                    }
+                ]
+            }
         ]
     },
 
@@ -81,6 +100,7 @@ const classesData = [
         descricaoCurta: "Descrição curta da classe",
         arte: "Nome do Artista",
         paginaartista: "https://exemplo.com/artista",
+        tituloDeSubclasse: "Título das Subclasses",
 
         secoes: [
             {
@@ -143,6 +163,20 @@ const classesData = [
                         nivel: 2,
                         titulo: "Carcterística de Nível 2",
                         descricao: `Descrição detalhada da característica de nível 2.`
+                    }
+                ]
+            }
+        ],
+        subclasses: [
+            {
+                id: 1,
+                nome: "Nome da Subclasse",
+                descricao: "Descrição da subclasse",
+                caracteristicas: [
+                    {
+                        nivel: 3,
+                        titulo: "Característica de Nível 3",
+                        descricao: "Descrição detalhada da característica de nível 3."
                     }
                 ]
             }

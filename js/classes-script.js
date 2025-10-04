@@ -135,7 +135,8 @@ function gerarConteudoModular(classe) {
                     </div>`;
         }
     });
-    
+    html += gerarSecaoSubclasses(classe);
+
     return html;
 }
 
@@ -179,6 +180,40 @@ function gerarSecaoTraçosPrincipais(secao) {
                         `).join('')}
                     </tbody>
                 </table>
+            </div>
+        </div>
+    `;
+}
+
+// Adicione esta nova função para gerar subclasses
+function gerarSecaoSubclasses(classe) {
+    if (!classe.subclasses || !Array.isArray(classe.subclasses) || classe.subclasses.length === 0) {
+        return ''; // Retorna vazio se não houver subclasses
+    }
+    
+    return `
+        <div class="secao-subclasses">
+            <h3>${classe.tituloDeSubclasse}</h3>
+            <div class="subclasses-lista">
+                ${classe.subclasses.map(subclasse => `
+                    <div class="subclasse-item">
+                        <div class="subclasse-cabecalho">
+                            <h4 class="subclasse-titulo">${subclasse.nome}</h4>
+                        </div>
+                        <p class="subclasse-descricao">${subclasse.descricao}</p>
+                        <div class="subclasse-caracteristicas">
+                            ${subclasse.caracteristicas.map(carac => `
+                                <div class="subclasse-caracteristica">
+                                    <div class="caracteristica-cabecalho">
+                                        <span class="caracteristica-nivel">Nível ${carac.nivel}</span>
+                                        <h5 class="caracteristica-titulo">${carac.titulo}</h5>
+                                    </div>
+                                    <div class="caracteristica-descricao">${carac.descricao}</div>
+                                </div>
+                            `).join('')}
+                        </div>
+                    </div>
+                `).join('')}
             </div>
         </div>
     `;
