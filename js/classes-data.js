@@ -1,4 +1,6 @@
+// Banco de dados das classes
 const classesData = [
+    // Guerreiro Espiritual ID 1
     {
         id: 1,
         nome: "Guerreiro Espiritual",
@@ -11,7 +13,6 @@ const classesData = [
         secoes: [
             {
                 tipo: "descricao",
-                subtitulo: "A Lenda do Guerreiro Espiritual",
                 conteudo: [
                     `"No equilíbrio entre o corpo e a alma, há aqueles que ouvem o chamado do espírito, que sentem o fluxo invisível que conecta toda a existência. Esses são os 
                     Guerreiros Espirituais, mestres da energia vital, capazes de moldar suas forças interiores em poderosos feitos de habilidade e domínio elementar."`
@@ -42,11 +43,11 @@ const classesData = [
                 descricao: "Como um Guerreiro Espiritual, você ganha as seguintes características de classe quando atinge os níveis específicos.",
                 colunas: ["Nível", "Bônus de Proficiência", "Características", "Pontos de Vita"],
                 linhas: [
-                    { nivel: 1, proficiencia: "+2", caracteristicas: "Pontos de Vita, Meditação Marcial", pontosVita: 2 },
-                    { nivel: 2, proficiencia: "+2", caracteristicas: "Estilo de Combate, Fluxo Espiritual", pontosVita: 3 },
-                    { nivel: 3, proficiencia: "+2", caracteristicas: "Caminho Espiritual", pontosVita: 4 },
-                    { nivel: 4, proficiencia: "+2", caracteristicas: "Incremento de Habilidade", pontosVita: 5 },
-                    { nivel: 5, proficiencia: "+3", caracteristicas: "Ataque Extra", pontosVita: 6 }
+                    { nivel: 1, bonusdeproficiencia: "+2", caracteristicas: "Pontos de Vita, Meditação Marcial", pontosdevita: 2 },
+                    { nivel: 2, bonusdeproficiencia: "+2", caracteristicas: "Estilo de Combate, Fluxo Espiritual", pontosdevita: 3 },
+                    { nivel: 3, bonusdeproficiencia: "+2", caracteristicas: "Caminho Espiritual", pontosdevita: 4 },
+                    { nivel: 4, bonusdeproficiencia: "+2", caracteristicas: "Incremento de Habilidade", pontosdevita: 5 },
+                    { nivel: 5, bonusdeproficiencia: "+3", caracteristicas: "Ataque Extra", pontosdevita: 6 }
                 ]
             },
             {
@@ -66,5 +67,86 @@ const classesData = [
                 ]
             }
         ]
+    },
+
+
+
+/* 
+    // Exemplo de classe
+    {
+        id: 0,
+        nome: "Exemplo de Classe",
+        imagemCard: "images/cards/Temporario.jpg",
+        imagemVertical: "images/classes/Temporario.jpg",
+        descricaoCurta: "Descrição curta da classe",
+        arte: "Nome do Artista",
+        paginaartista: "https://exemplo.com/artista",
+
+        secoes: [
+            {
+                tipo: "descricao",
+                conteudo: [
+                    `"Descrição lendaria."`
+                ],
+                descricaoObjetiva: [
+                    `Descrição objetiva.`
+                ]
+            },
+            {
+                tipo: "tracosPrincipais",
+                titulo: "Principais Traços de classe",
+                tracos: {
+                    "Habilidade Primária": `...`,
+                    "Dados de Vida": "dX por nível de classe",
+                    "Proficiência de Salvaguarda": `...`,
+                    "Proficiência em Habilidades": `Escolha X: ...`,
+                    "Proficiência com Armas": `...`,
+                    "Proficiência com Armaduras": `...`,
+                    "Proficiência com Ferramentas": `...`,
+                    "Equipamento Inicial": `Escolha A ou B: (A) ... ou; (B) 50 PO`
+                }
+            },
+            {
+                tipo: "tabelaNiveis",
+                titulo: "Características do classe",
+                descricao: "Como um classe, você ganha as seguintes características de classe quando atinge os níveis específicos.",
+                colunas: ["Nível", "Bônus de Proficiência", "Características", "Recursos", "Truques Conhecidos", "Slots de Magia<br>1° 2° 3° 4° 5° 6° 7° 8° 9°"],
+                linhas: [
+                    { 
+                        nivel: 1, 
+                        bonusdeproficiencia: "+2", 
+                        caracteristicas: "Característica...", 
+                        recursos: 2, 
+                        truquesconhecidos: 2, 
+                        slotsdemagiabr123456789: "1 - - - - - - - -" 
+                    },
+                    { 
+                        nivel: 2, 
+                        bonusdeproficiencia: "+2", 
+                        caracteristicas: "Característica...", 
+                        recursos: 2, 
+                        truquesconhecidos: 2, 
+                        slotsdemagiabr123456789: "2 1 - - - - - - -" 
+                    }
+                ]
+            },
+            {
+                tipo: "caracteristicasDetalhadas",
+                titulo: "Características Detalhadas",
+                caracteristicas: [
+                    {
+                        nivel: 1,
+                        titulo: "Carcterística de Nível 1",
+                        descricao: `Descrição detalhada da característica de nível 1.`
+                    },
+                    {
+                        nivel: 2,
+                        titulo: "Carcterística de Nível 2",
+                        descricao: `Descrição detalhada da característica de nível 2.`
+                    }
+                ]
+            }
+        ]
     }
+*/
 ];
