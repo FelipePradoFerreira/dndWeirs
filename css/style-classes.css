@@ -236,7 +236,7 @@
     padding: 1.2rem;
     border-radius: 4px;
     flex-shrink: 0;
-    max-height: 600px; /* Limite de altura */
+    max-height: 485px; /* Limite de altura */
     overflow-y: auto; /* Scroll se necessário */
 }
 

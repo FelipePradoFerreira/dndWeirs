@@ -195,6 +195,7 @@ function gerarSecaoSubclasses(classe) {
         <div class="secao-subclasses">
             <h3>${classe.tituloDeSubclasse}</h3>
             <div class="subclasses-lista">
+            <p class="subclasse-descricao">${classe.descricaoSubclasse}</p>
                 ${classe.subclasses.map(subclasse => `
                     <div class="subclasse-item">
                         <div class="subclasse-cabecalho">

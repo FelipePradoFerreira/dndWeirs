@@ -5,8 +5,12 @@
 Uma aplicação web para organizar e exibir conteúdo homebrew de Dungeons & Dragons criados por mim e por meus amigos.
 
 ## 📋 Changelog
-
-### Versão 0.7.2 (Atual)
+### Versão 0.7.3 (Atual)
+- **Data:**04/10/2025
+- **Melhorias:**
+  - Adição completa de Guerreiros Espirituais e adição inicial de ceifadores.
+  
+### Versão 0.7.2
 - **Data:**03/10/2025
 - **Melhorias:**
   - Adição de subclasses no script-classes.
