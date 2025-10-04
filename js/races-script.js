@@ -35,7 +35,7 @@ function carregarListaRacas() {
         // Cria cabeçalho do plano
         const planoHeader = document.createElement('div');
         planoHeader.className = 'plano-header';
-        planoHeader.innerHTML = `<h2>Raças de ${nomePlano}</h2>`;
+        planoHeader.innerHTML = `<h2>${nomePlano}</h2>`;
         planoContainer.appendChild(planoHeader);
         
         // Cria container para os cards

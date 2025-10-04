@@ -1,6 +1,6 @@
 @import url('style.css');
 
-/* Lista de Classes - Containers Retangulares */
+/* Lista de Classes */
 .classes-lista h2 {
     text-align: center;
     color: white;
@@ -71,9 +71,8 @@
 }
 
 .classe-header {
-    background: white;
+    background: linear-gradient(135deg, #4a5568, #2d3748);
     padding: 2rem;
-    border-bottom: 3px solid #4a5568;
     position: relative;
     display: flex;
     justify-content: space-between;
@@ -82,12 +81,13 @@
 
 .classe-titulo {
     font-size: 2.5rem;
-    color: #2d3748;
+    color: white;
     margin: 0;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 }
 
 .btn-fechar {
-    background: #718096;
+    background: rgba(255, 255, 255, 0.2);
     color: white;
     border: none;
     border-radius: 50%;
@@ -106,132 +106,357 @@
     transform: scale(1.1);
 }
 
-.classe-conteudo {
+.classe-layout-principal {
     padding: 2rem;
 }
 
-.classe-descricao {
-    font-size: 1.1rem;
+/* Layout Principal - Duas Colunas com Tamanhos Fixos */
+.secao-principal {
+    display: grid;
+    grid-template-columns: 1fr 40px 1fr; /* Colunas iguais com espaçamento central */
+    gap: 0; /* Removemos o gap pois usamos a coluna central para espaçamento */
+    margin-bottom: 3rem;
+    align-items: start;
+    min-height: 600px;
+}
+
+.coluna-imagem {
+    position: sticky;
+    top: 2rem;
+    height: fit-content;
+}
+
+.coluna-conteudo {
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+    min-height: 600px;
+}
+
+.coluna-espacamento {
+    /* Esta coluna serve apenas para criar espaço entre as outras */
+    width: 100%;
+}
+
+/* Imagem Vertical com Crédito do Artista */
+.classe-imagem-vertical {
+    width: 100%;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+    position: relative;
+}
+
+/* Ajuste na imagem vertical */
+.classe-imagem-vertical img {
+    width: 100%;
+    height: 900px; /* Reduzimos para equilibrar com o conteúdo */
+    object-fit: cover;
+    display: block;
+}
+
+
+.artista-credito {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+    padding: 1.5rem 1rem 1rem 1rem;
+    text-align: center;
+}
+
+.artista-credito a {
+    color: white;
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 500;
+    text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+    transition: color 0.3s ease;
+}
+
+.artista-credito a:hover {
+    color: #90cdf4;
+    text-decoration: underline;
+}
+
+/* Seção Descrição - Lenda e Objetiva */
+.secao-descricao {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.descricao-lenda {
+    background: linear-gradient(135deg, #f8fafc, #e2e8f0);
+    padding: 1.5rem;
+    border-radius: 4px;
+    border-left: 4px solid #d69e2e;
+}
+
+.descricao-lenda h3 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+    font-style: italic;
+}
+
+.descricao-objetiva {
+    background: #f8fafc;
+    padding: 1.5rem;
+    border-radius: 4px;
+    border-left: 4px solid #4299e1;
+}
+
+.descricao-objetiva-texto {
+    font-size: 1rem;
     line-height: 1.6;
     color: #4a5568;
-    margin-bottom: 2rem;
+    margin: 0;
 }
 
-/* Tabelas */
-.tabela-container {
-    margin: 2rem 0;
-    overflow-x: auto;
+.classe-descricao {
+    font-size: 1.05rem;
+    line-height: 1.7;
+    color: #4a5568;
+    margin: 0 0 1rem 0;
+    font-style: italic;
 }
 
+.classe-descricao:last-child {
+    margin-bottom: 0;
+}
+
+/* Seção Traços Principais - Compacta */
+/* Ajuste na tabela de traços para não crescer demais */
+.secao-traços-principais {
+    background: #f8fafc;
+    padding: 1.2rem;
+    border-radius: 4px;
+    flex-shrink: 0;
+    max-height: 600px; /* Limite de altura */
+    overflow-y: auto; /* Scroll se necessário */
+}
+
+.secao-traços-principais h3 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    font-size: 1.2rem;
+}
+
+/* Tabela de Traços - Compacta */
 .tabela-traços {
     width: 100%;
     border-collapse: collapse;
-    margin-bottom: 2rem;
-    background: #f8fafc;
-}
-
-.tabela-traços th {
-    background: #4a5568;
-    color: white;
-    padding: 1rem;
-    text-align: left;
-    font-weight: bold;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+    font-size: 0.9rem; /* Texto menor */
 }
 
 .tabela-traços td {
-    padding: 0.8rem 1rem;
+    padding: 0.6rem 0.8rem; /* Padding reduzido */
     border-bottom: 1px solid #e2e8f0;
 }
 
-.tabela-traços tr:nth-child(even) {
-    background: #edf2f7;
+.tabela-traços tr:last-child td {
+    border-bottom: none;
+}
+
+.tabela-traços td:first-child {
+    width: 45%;
+    font-weight: 600;
+    color: #2d3748;
+    background: #f7fafc;
+}
+
+.tabela-traços td:last-child {
+    color: #4a5568;
+}
+
+/* Texto Teste */
+.texto-teste {
+    background: #f8fafc;
+    padding: 1rem 1.5rem;
+    border-radius: 4px;
+    border-left: 4px solid #9f7aea;
+    text-align: center;
+    flex-shrink: 0; /* Mantém tamanho fixo */
+}
+
+.texto-teste p {
+    margin: 0;
+    color: #4a5568;
+    font-style: italic;
+    font-size: 0.9rem;
+}
+
+/* Seções abaixo do layout principal */
+.secao-tabela-niveis {
+    margin: 2rem 0;
+    padding: 1.5rem;
+    background: #f8fafc;
+    border-radius: 4px;
+}
+
+.secao-tabela-niveis h3 {
+    color: #2d3748;
+    margin-bottom: 1rem;
+    font-size: 1.3rem;
+}
+
+.tabela-descricao {
+    color: #718096;
+    margin-bottom: 1.5rem;
+    font-style: italic;
 }
 
 .tabela-niveis {
     width: 100%;
     border-collapse: collapse;
-    margin: 2rem 0;
-    font-size: 0.9rem;
+    background: white;
+    border-radius: 4px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
 }
 
 .tabela-niveis th {
-    background: #2d3748;
+    background: #4a5568;
     color: white;
-    padding: 0.8rem;
+    padding: 1rem;
     text-align: center;
     font-weight: bold;
+    font-size: 0.9rem;
 }
 
 .tabela-niveis td {
-    padding: 0.6rem;
+    padding: 0.8rem;
     border: 1px solid #e2e8f0;
     text-align: center;
+    color: #4a5568;
 }
 
 .tabela-niveis tr:nth-child(even) {
     background: #f7fafc;
 }
 
-/* Características por Nível */
-.caracteristicas-nivel {
+/* Características Detalhadas */
+.secao-caracteristicas-detalhadas {
     margin: 2rem 0;
 }
 
-.nivel-secao {
-    background: #f8fafc;
-    border-left: 4px solid #4299e1;
-    padding: 1.5rem;
-    margin: 1.5rem 0;
-    border-radius: 0 8px 8px 0;
+.secao-caracteristicas-detalhadas h3 {
+    color: #2d3748;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
 }
 
-.nivel-titulo {
-    font-size: 1.3rem;
-    color: #2d3748;
-    margin-bottom: 0.5rem;
+.caracteristicas-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.caracteristica-item {
+    background: #f8fafc;
+    border-radius: 4px;
+    padding: 1.5rem;
+    border-left: 4px solid #38a169;
+}
+
+.caracteristica-cabecalho {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 0.8rem;
+}
+
+.caracteristica-nivel {
+    background: #38a169;
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
     font-weight: bold;
 }
 
-.nivel-descricao {
+.caracteristica-titulo {
+    color: #2d3748;
+    margin: 0;
+    font-size: 1.2rem;
+}
+
+.caracteristica-descricao {
     color: #4a5568;
-    line-height: 1.5;
-}
-
-/* Sistema flexível para diferentes tipos de tabelas */
-.tabela-conjuradores {
-    background: #fff5f5;
-}
-
-.tabela-conjuradores th {
-    background: #c53030;
-}
-
-.tabela-simples {
-    background: #f0fff4;
-}
-
-.tabela-simples th {
-    background: #38a169;
+    line-height: 1.6;
 }
 
 /* Responsividade */
+@media (max-width: 1200px) {
+    .secao-principal {
+        grid-template-columns: 1fr 20px 1fr;
+    }
+    
+    .classe-imagem-vertical img {
+        height: 550px;
+    }
+}
+
+@media (max-width: 968px) {
+    .secao-principal {
+        grid-template-columns: 300px 1fr;
+        gap: 2rem;
+    }
+    
+    .coluna-espacamento {
+        display: none; /* Remove a coluna de espaçamento em tablets */
+    }
+    
+    .classe-imagem-vertical img {
+        height: 500px;
+    }
+}
+
 @media (max-width: 768px) {
-    .classe-card {
-        flex-direction: column;
+    .secao-principal {
+        grid-template-columns: 1fr;
+        gap: 2rem;
         min-height: auto;
     }
     
-    .classe-card-image {
-        width: 100%;
-        height: 120px;
+    .coluna-imagem {
+        position: static;
+        max-width: 100%;
+        margin: 0 auto;
     }
     
-    .tabela-container {
-        font-size: 0.8rem;
+    .classe-imagem-vertical img {
+        height: 400px; /* Reduz bastante em mobile */
+        max-height: 50vh; /* Limita a 50% da altura da tela */
     }
     
-    .classe-titulo {
-        font-size: 2rem;
+    .coluna-conteudo {
+        min-height: auto;
+        gap: 1.5rem;
+    }
+    
+    .secao-descricao {
+        max-height: none; /* Remove limite em mobile */
+        overflow-y: visible;
+    }
+    
+    .secao-traços-principais {
+        max-height: none;
+        overflow-y: visible;
+    }
+}
+
+@media (max-width: 480px) {
+    .classe-imagem-vertical img {
+        height: 300px; /* Ainda menor em telas muito pequenas */
     }
 }
 
@@ -245,58 +470,4 @@
 .back-link:hover {
     color: #63b3ed;
     text-decoration: underline;
-}
-
-.classe-imagem-wide {
-    width: 100%;
-    height: 300px;
-    overflow: hidden;
-}
-
-.classe-imagem-wide img {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-}
-
-/* Estilos específicos para cada tipo de tabela */
-.tabela-combatente {
-    background: #f0f4f8;
-}
-
-.tabela-combatente th {
-    background: #2d3748;
-}
-
-.tabela-conjurador {
-    background: #faf5ff;
-}
-
-.tabela-conjurador th {
-    background: #6b46c1;
-}
-
-.tabela-ladino {
-    background: #f0fff4;
-}
-
-.tabela-ladino th {
-    background: #38a169;
-}
-
-.tabela-semi-conjurador {
-    background: #fff5f5;
-}
-
-.tabela-semi-conjurador th {
-    background: #c53030;
-}
-
-/* Melhorar a visualização dos slots de magia */
-.tabela-niveis td {
-    white-space: nowrap;
-}
-
-.tabela-niveis th span {
-    font-weight: normal;
 }

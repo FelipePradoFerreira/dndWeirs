@@ -1,3 +1,6 @@
+// Variável global para armazenar a posição do scroll
+let scrollPositionClasses = 0;
+
 // Função para carregar a lista de classes
 function carregarListaClasses() {
     const container = document.getElementById('classes-container');
@@ -5,7 +8,10 @@ function carregarListaClasses() {
     classesData.forEach(classe => {
         const card = document.createElement('div');
         card.className = 'classe-card';
-        card.onclick = () => mostrarDetalhesClasse(classe.id);
+        card.onclick = (event) => {
+                mostrarDetalhesClasse(classe.id, event);
+            };
+        card.tabIndex = 0;
         
         card.innerHTML = `
             <div class="classe-card-image">
@@ -17,231 +23,282 @@ function carregarListaClasses() {
             </div>
         `;
         
+        // Suporte a teclado para acessibilidade
+        card.addEventListener('keydown', (event) => {
+            if (event.key === 'Enter' || event.key === ' ') {
+                event.preventDefault();
+                mostrarDetalhesClasse(classe.id, event); // ← Passe o evento
+            }
+        });
+        
         container.appendChild(card);
     });
 }
 
 // Função para mostrar detalhes da classe
-function mostrarDetalhesClasse(id) {
+function mostrarDetalhesClasse(id, event) {
+    // Se um evento foi passado, previne a propagação
+    if (event) {
+        event.stopPropagation();
+        event.preventDefault();
+    }
+    
+    // Salva a posição do scroll
+    scrollPositionClasses = window.pageYOffset || document.documentElement.scrollTop;
+    
     const classe = classesData.find(c => c.id === id);
-    if (!classe) return;
+    if (!classe) {
+        console.error('Classe não encontrada com ID:', id);
+        return;
+    }
+    
+    console.log('Carregando detalhes da classe:', classe);
     
     document.getElementById('lista-classes').style.display = 'none';
     const detalhesSection = document.getElementById('detalhes-classe');
     detalhesSection.style.display = 'block';
     
-    // Gerar tabela de níveis
-    const tabelaNiveisHTML = gerarTabelaNiveis(classe);
+    // Gera o conteúdo modular baseado nas seções
+    const conteudoModular = gerarConteudoModular(classe);
     
     detalhesSection.innerHTML = `
         <div class="classe-header">
             <h2 class="classe-titulo">${classe.nome}</h2>
-            <button class="btn-fechar" onclick="voltarParaListaClasses()">×</button>
+            <button class="btn-fechar" onclick="voltarParaListaClasses()" aria-label="Fechar detalhes">×</button>
         </div>
         
-        <div class="classe-imagem-wide">
-            <img src="${classe.imagemWide}" alt="${classe.nome}">
+        <div class="classe-layout-principal">
+            ${conteudoModular}
         </div>
-        
-        <div class="classe-conteudo">
-            ${classe.descricaoLonga.map(paragrafo => `
-                <div class="classe-descricao">${paragrafo}</div>
-            `).join('')}
+    `;
+    
+    // Foca no botão de fechar para acessibilidade
+    const btnFechar = detalhesSection.querySelector('.btn-fechar');
+    if (btnFechar) {
+        btnFechar.focus();
+    }
+}
+
+
+// Função para gerar conteúdo modular baseado nas seções
+function gerarConteudoModular(classe) {
+    let html = '';
+    
+    if (!classe.secoes || !Array.isArray(classe.secoes)) {
+        console.error('Classe não tem seções definidas:', classe);
+        return '<p>Erro: Seções não definidas para esta classe.</p>';
+    }
+    
+    // Encontra as seções específicas
+    const secaoDescricao = classe.secoes.find(s => s.tipo === 'descricao');
+    const secaoTraços = classe.secoes.find(s => s.tipo === 'tracosPrincipais');
+    
+    // Gera o layout de três colunas (imagem - espaçamento - conteúdo)
+    html += `
+        <div class="secao-principal">
+            <div class="coluna-imagem">
+                <div class="classe-imagem-vertical">
+                    <img src="${classe.imagemVertical || classe.imagemCard}" alt="${classe.nome}">
+                    <div class="artista-credito">
+                        <a href="${classe.paginaartista || '#'}" target="_blank">Arte por: ${classe.arte || 'Artista'}</a>
+                    </div>
+                </div>
+            </div>
+            <div class="coluna-espacamento"></div>
+            <div class="coluna-conteudo">
+                ${secaoDescricao ? gerarSecaoDescricao(secaoDescricao) : ''}
+                ${secaoTraços ? gerarSecaoTraçosPrincipais(secaoTraços) : ''}
+            </div>
+        </div>
+    `;
+    
+    // Adiciona as outras seções abaixo do layout principal
+    const outrasSecoes = classe.secoes.filter(s => s.tipo !== 'descricao' && s.tipo !== 'tracosPrincipais');
+    
+    outrasSecoes.forEach((secao, index) => {
+        try {
+            switch(secao.tipo) {
+                case 'tabelaNiveis':
+                    html += gerarSecaoTabelaNiveis(secao);
+                    break;
+                case 'caracteristicasDetalhadas':
+                    html += gerarSecaoCaracteristicasDetalhadas(secao);
+                    break;
+                default:
+                    console.warn('Tipo de seção desconhecido:', secao.tipo);
+                    html += gerarSecaoGenerica(secao);
+            }
+        } catch (error) {
+            console.error(`Erro ao processar seção ${index}:`, error);
+            html += `<div class="erro-secao">
+                        <p>Erro ao carregar seção: ${error.message}</p>
+                    </div>`;
+        }
+    });
+    
+    return html;
+}
+
+// Geradores de seções específicas - CORRIGIDOS
+function gerarSecaoDescricao(secao) {
+    return `
+        <div class="secao-descricao">
+            ${secao.conteudo ? secao.conteudo.map(paragrafo => `
+                <p class="classe-descricao">${paragrafo}</p>
+            `).join('') : '<p>Descrição não disponível.</p>'}
             
-            <!-- Tabela de Traços Principais -->
+            ${secao.descricaoObjetiva && Array.isArray(secao.descricaoObjetiva) ? `
+                
+                    ${secao.descricaoObjetiva.map(paragrafo => `
+                        <p class="descricao-objetiva-texto">${paragrafo}</p>
+                    `).join('')}
+                
+            ` : ''}
+        </div>
+    `;
+}
+
+function gerarSecaoTraçosPrincipais(secao) {
+    if (!secao.tracos || typeof secao.tracos !== 'object') {
+        return `<div class="erro-secao">
+                    <p>Traços principais não definidos corretamente.</p>
+                </div>`;
+    }
+    
+    return `
+        <div class="secao-traços-principais">
+            <h3>${secao.titulo || 'Traços Principais'}</h3>
             <div class="tabela-container">
                 <table class="tabela-traços">
-                    <thead>
-                        <tr>
-                            <th colspan="2">Principais Traços de ${classe.nome}</th>
-                        </tr>
-                    </thead>
                     <tbody>
-                        ${Object.entries(classe.tracosPrincipais).map(([chave, valor]) => `
+                        ${Object.entries(secao.tracos).map(([chave, valor]) => `
                             <tr>
-                                <td><strong>${formatarChave(chave)}</strong></td>
+                                <td><strong>${chave}</strong></td>
                                 <td>${valor}</td>
                             </tr>
                         `).join('')}
                     </tbody>
                 </table>
             </div>
-            
-            <!-- Tabela de Características por Nível -->
-            <h3>Características da Classe ${classe.nome}</h3>
-            <p>Como um ${classe.nome}, você ganha as seguintes características de classe quando atinge os níveis específicos.</p>
-            
-            ${tabelaNiveisHTML}
-            
-            <!-- Características Detalhadas -->
-            <div class="caracteristicas-nivel">
-                ${classe.caracteristicas.map(carac => `
-                    <div class="nivel-secao">
-                        <div class="nivel-titulo">Nível ${carac.nivel}: ${carac.titulo}</div>
-                        <div class="nivel-descricao">${carac.descricao}</div>
+        </div>
+    `;
+}
+
+function gerarSecaoTabelaNiveis(secao) {
+    if (!secao.linhas || !Array.isArray(secao.linhas)) {
+        return `<div class="erro-secao">
+                    <p>Tabela de níveis não definida corretamente.</p>
+                </div>`;
+    }
+    
+    const colunas = secao.colunas || ['Nível', 'Características'];
+    
+    return `
+        <div class="secao-tabela-niveis">
+            <h3>${secao.titulo || 'Progressão da Classe'}</h3>
+            ${secao.descricao ? `<p class="tabela-descricao">${secao.descricao}</p>` : ''}
+            <div class="tabela-container">
+                <table class="tabela-niveis">
+                    <thead>
+                        <tr>
+                            ${colunas.map(coluna => `<th>${coluna}</th>`).join('')}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${secao.linhas.map(linha => `
+                            <tr>
+                                ${colunas.map(coluna => {
+                                    // Converte o nome da coluna para chave (minúsculo, sem espaços)
+                                    const chave = coluna.toLowerCase().replace(/[^a-z0-9]/g, '');
+                                    const valor = linha[chave] || linha[coluna] || '-';
+                                    return `<td>${valor}</td>`;
+                                }).join('')}
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    `;
+}
+
+function gerarSecaoCaracteristicasDetalhadas(secao) {
+    if (!secao.caracteristicas || !Array.isArray(secao.caracteristicas)) {
+        return `<div class="erro-secao">
+                    <p>Características detalhadas não definidas corretamente.</p>
+                </div>`;
+    }
+    
+    return `
+        <div class="secao-caracteristicas-detalhadas">
+
+            <div class="caracteristicas-lista">
+                ${secao.caracteristicas.map(carac => `
+                    <div class="caracteristica-item">
+                        <div class="caracteristica-cabecalho">
+                            <span class="caracteristica-nivel">Nível ${carac.nivel || '?'}</span>
+                            <h4 class="caracteristica-titulo">${carac.titulo || 'Característica'}</h4>
+                        </div>
+                        <div class="caracteristica-descricao">${carac.descricao || 'Descrição não disponível.'}</div>
                     </div>
                 `).join('')}
             </div>
         </div>
     `;
-    
-    window.scrollTo({ top: 0, behavior: 'smooth' });
 }
 
-// Sistema de geração de tabelas flexível
-function gerarTabelaNiveis(classe) {
-    const tabelaConfigs = {
-        'combatente-recurso': {
-            colunas: ['Nível', 'Bônus de Proficiência', 'Características e Traços', 'Pontos de Vita'],
-            dados: (nivel) => [
-                nivel.nivel,
-                nivel.proficiencia,
-                nivel.caracteristicas,
-                nivel.pontosVita || '-'
-            ],
-            classeCSS: 'tabela-combatente'
-        },
-        
-        'conjurador-completo': {
-            colunas: ['Nível', 'Bônus de Proficiência', 'Características', 'Recurso', 'Truques', 'Slots de Magia por Nível<br>1st 2nd 3rd 4th 5th 6th 7th 8th 9th'],
-            dados: (nivel) => [
-                nivel.nivel,
-                nivel.proficiencia,
-                nivel.caracteristicas,
-                nivel.recursoClasse || '-',
-                nivel.truques || '-',
-                gerarSlotsMagia(nivel.slotsMagia)
-            ],
-            classeCSS: 'tabela-conjurador'
-        },
-
-        // Exemplo 3: Conjurador sem recurso
-        'conjurador-sem-recurso': {
-            colunas: ['Nível', 'Bônus de Proficiência', 'Características', 'Truques', 'Slots de Magia por Nível de Magia'],
-            dados: (nivel) => [
-                nivel.nivel,
-                nivel.proficiencia,
-                nivel.caracteristicas,
-                nivel.truques || '-',
-                gerarSlotsMagia(nivel.slotsMagia)
-            ],
-            classeCSS: 'tabela-conjurador'
-        },
-        
-        // Exemplo 4: Combatente sem recurso
-        'combatente-sem-recurso': {
-            colunas: ['Nível', 'Bônus de Proficiência', 'Características e Traços'],
-            dados: (nivel) => [
-                nivel.nivel,
-                nivel.proficiencia,
-                nivel.caracteristicas
-            ],
-            classeCSS: 'tabela-combatente'
-        },
-        
-        // Exemplo 5: Ladino com recurso
-        'ladino-com-recurso': {
-            colunas: ['Nível', 'Bônus de Proficiência', 'Características', 'Recurso', 'Ataque Furtivo'],
-            dados: (nivel) => [
-                nivel.nivel,
-                nivel.proficiencia,
-                nivel.caracteristicas,
-                nivel.recursoClasse || '-',
-                nivel.ataqueFurtivo || '-'
-            ],
-            classeCSS: 'tabela-ladino'
-        },
-        
-        // Exemplo 6: Ladino sem recurso
-        'ladino-sem-recurso': {
-            colunas: ['Nível', 'Bônus de Proficiência', 'Características', 'Ataque Furtivo'],
-            dados: (nivel) => [
-                nivel.nivel,
-                nivel.proficiencia,
-                nivel.caracteristicas,
-                nivel.ataqueFurtivo || '-'
-            ],
-            classeCSS: 'tabela-ladino'
-        },
-        
-        // Exemplo 7: Semi-conjurador (Warlock style)
-        'semi-conjurador': {
-            colunas: ['Nível', 'Bônus de Proficiência', 'Características', 'Truques', 'Magias', 'Espaços', 'Nível Espaços', 'Recurso'],
-            dados: (nivel) => [
-                nivel.nivel,
-                nivel.proficiencia,
-                nivel.caracteristicas,
-                nivel.truques || '-',
-                nivel.magias || '-',
-                nivel.slotsMagia || '-',
-                nivel.nivelSlots || '-',
-                nivel.recursoClasse || '-'
-            ],
-            classeCSS: 'tabela-semi-conjurador'
-        }
-    };
-
-    const config = tabelaConfigs[classe.tipoTabela] || tabelaConfigs['combatente-recurso'];
-    
+function gerarSecaoGenerica(secao) {
     return `
-        <div class="tabela-container">
-            <table class="tabela-niveis ${config.classeCSS}">
-                <thead>
-                    <tr>
-                        ${config.colunas.map(coluna => `<th>${coluna}</th>`).join('')}
-                    </tr>
-                </thead>
-                <tbody>
-                    ${classe.tabelaNiveis.map(nivel => `
-                        <tr>
-                            ${config.dados(nivel).map(dado => `<td>${dado}</td>`).join('')}
-                        </tr>
-                    `).join('')}
-                </tbody>
-            </table>
+        <div class="secao-generica">
+            ${secao.titulo ? `<h3>${secao.titulo}</h3>` : ''}
+            ${secao.conteudo ? `<div class="secao-conteudo">${secao.conteudo}</div>` : ''}
         </div>
     `;
 }
 
-// Função auxiliar para gerar visualização de slots de magia
-function gerarSlotsMagia(slots) {
-    if (!slots) return '-';
-    return slots.map(qtd => qtd > 0 ? qtd : '-').join(' ');
-}
-
-// Função auxiliar para formatar as chaves da tabela
-function formatarChave(chave) {
-    const formatacoes = {
-        'habilidadePrimaria': 'Habilidade Primária',
-        'dadosVida': 'Dados de Vida',
-        'proficienciaSalvaguarda': 'Proficiência de Salvaguarda',
-        'proficienciaHabilidades': 'Proficiência em Habilidades',
-        'proficienciaArmas': 'Proficiência com Armas',
-        'proficienciaArmaduras': 'Proficiência com Armaduras',
-        'proficienciaFerramentas': 'Proficiência com Ferramentas',
-        'equipamentoInicial': 'Equipamento Inicial'
-    };
-    return formatacoes[chave] || chave;
-}
-
+// Função para voltar à lista
 function voltarParaListaClasses() {
-    document.getElementById('detalhes-classe').style.display = 'none';
-    document.getElementById('lista-classes').style.display = 'block';
+    const detalhesSection = document.getElementById('detalhes-classe');
+    const listaClasses = document.getElementById('lista-classes');
+    
+    if (detalhesSection && listaClasses) {
+        detalhesSection.style.display = 'none';
+        listaClasses.style.display = 'block';
+        
+        // Restaura a posição do scroll
+        window.scrollTo({ top: scrollPositionClasses, behavior: 'instant' });
+    }
+}
+
+// Configura o evento da tecla Esc
+function configurarTeclaEscClasses() {
+    document.addEventListener('keydown', function(event) {
+        if (event.key === 'Escape' || event.keyCode === 27) {
+            const detalhesSection = document.getElementById('detalhes-classe');
+            if (detalhesSection && detalhesSection.style.display === 'block') {
+                voltarParaListaClasses();
+            }
+        }
+    });
 }
 
 // Configura o clique fora da área de detalhes para fechar
 document.addEventListener('click', function(event) {
     const detalhesSection = document.getElementById('detalhes-classe');
-    const listaClasses = document.getElementById('lista-classes');
     
-    // Se a seção de detalhes está visível E o clique foi fora dela
-    // E não foi em um card da lista
-    if (detalhesSection.style.display === 'block' && 
-        !detalhesSection.contains(event.target) &&
-        !event.target.closest('.classe-card')) {
-        voltarParaListaClasses();
+    if (detalhesSection && detalhesSection.style.display === 'block') {
+        // Verifica se o clique foi fora da seção de detalhes
+        if (!detalhesSection.contains(event.target)) {
+            // Pequeno delay para evitar conflito com outros event listeners
+            setTimeout(() => {
+                voltarParaListaClasses();
+            }, 10);
+        }
     }
 });
 
 // Carrega a lista quando a página abre
-document.addEventListener('DOMContentLoaded', carregarListaClasses);
+document.addEventListener('DOMContentLoaded', function() {
+    carregarListaClasses();
+    configurarTeclaEscClasses();
+});
