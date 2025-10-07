@@ -124,6 +124,9 @@ function gerarConteudoModular(classe) {
                 case 'caracteristicasDetalhadas':
                     html += gerarSecaoCaracteristicasDetalhadas(secao);
                     break;
+                case 'tabelaExtra':
+                    html += gerarSecaoTabelaExtra(secao);
+                    break;
                 default:
                     console.warn('Tipo de seção desconhecido:', secao.tipo);
                     html += gerarSecaoGenerica(secao);
@@ -135,8 +138,10 @@ function gerarConteudoModular(classe) {
                     </div>`;
         }
     });
+    
+    // ADICIONE ESTA LINHA PARA INCLUIR SUBCLASSES
     html += gerarSecaoSubclasses(classe);
-
+    
     return html;
 }
 
@@ -193,9 +198,9 @@ function gerarSecaoSubclasses(classe) {
     
     return `
         <div class="secao-subclasses">
-            <h3>${classe.tituloDeSubclasse}</h3>
+            <h3>${classe.tituloDeSubclasse || 'Subclasses'}</h3>
+            ${classe.descricaoSubclasse ? `<p class="subclasse-descricao">${classe.descricaoSubclasse}</p>` : ''}
             <div class="subclasses-lista">
-            <p class="subclasse-descricao">${classe.descricaoSubclasse}</p>
                 ${classe.subclasses.map(subclasse => `
                     <div class="subclasse-item">
                         <div class="subclasse-cabecalho">
@@ -209,7 +214,11 @@ function gerarSecaoSubclasses(classe) {
                                         <span class="caracteristica-nivel">Nível ${carac.nivel}</span>
                                         <h5 class="caracteristica-titulo">${carac.titulo}</h5>
                                     </div>
-                                    <div class="caracteristica-descricao">${carac.descricao}</div>
+                                    <div class="caracteristica-descricao">
+                                        ${carac.descricao}
+                                        <!-- ADICIONE ESTA LINHA PARA INCLUIR A FICHA -->
+                                        ${carac.fichaCriatura ? gerarFichaCriatura(carac.fichaCriatura) : ''}
+                                    </div>
                                 </div>
                             `).join('')}
                         </div>
@@ -220,21 +229,82 @@ function gerarSecaoSubclasses(classe) {
     `;
 }
 
-function gerarSecaoTabelaNiveis(secao) {
+// Função para gerar ficha de criatura
+function gerarFichaCriatura(ficha) {
+    if (!ficha) return '';
+    
+    return `
+        <div class="ficha-criatura">
+            <div class="ficha-cabecalho">
+                <h5 class="ficha-titulo">${ficha.nome || 'Criatura'}</h5>
+                <p class="ficha-descricao-curta">${ficha.descricaoCurta || ''}</p>
+            </div>
+            
+            <div class="ficha-atributos">
+                <div class="ficha-atributo">
+                    <strong>CA:</strong> ${ficha.ca || '-'}
+                </div>
+                <div class="ficha-atributo">
+                    <strong>PV:</strong> ${ficha.pv || '-'}
+                </div>
+                <div class="ficha-atributo">
+                    <strong>Deslocamento:</strong> ${ficha.deslocamento || '-'}
+                </div>
+            </div>
+            
+            ${ficha.atributos ? `
+            <div class="ficha-atributos-detlahados">
+                <div class="atributos-lista">
+                    ${Object.entries(ficha.atributos).map(([atributo, valor]) => `
+                        <div class="atributo-item">
+                            <strong>${atributo.toUpperCase()}:</strong> ${valor}
+                        </div>
+                    `).join('')}
+                </div>
+            </div>
+            ` : ''}
+            
+            ${ficha.descricaoDetalhada ? `
+            <div class="ficha-descricao-detalhada">
+                <p>${ficha.descricaoDetalhada}</p>
+            </div>
+            ` : ''}
+            
+            ${ficha.acoes && ficha.acoes.length > 0 ? `
+            <div class="ficha-acoes">
+                <h6>Ações</h6>
+                ${ficha.acoes.map(acao => `
+                    <div class="acao-item">
+                        <strong>${acao.nome}:</strong> ${acao.descricao}
+                    </div>
+                `).join('')}
+            </div>
+            ` : ''}
+        </div>
+    `;
+}
+
+// Adicione esta nova função para gerar tabelas extras
+function gerarSecaoTabelaExtra(secao) {
+     console.log('DEBUG - Tabela Extra:'); // ← Adicione esta linha
+    console.log('Colunas:', secao.colunas); // ← Adicione esta linha
+    console.log('Primeira linha:', secao.linhas[0]); // ← Adicione esta linha
+    console.log('Chaves convertidas:', secao.colunas.map(col => col.toLowerCase().replace(/[^a-z0-9]/g, ''))); // ← Adicione esta linha
     if (!secao.linhas || !Array.isArray(secao.linhas)) {
         return `<div class="erro-secao">
-                    <p>Tabela de níveis não definida corretamente.</p>
+                    <p>Tabela extra não definida corretamente.</p>
                 </div>`;
     }
     
-    const colunas = secao.colunas || ['Nível', 'Características'];
+    const colunas = secao.colunas || ['Categoria', 'Detalhes'];
     
     return `
-        <div class="secao-tabela-niveis">
-            <h3>${secao.titulo || 'Progressão da Classe'}</h3>
-            ${secao.descricao ? `<p class="tabela-descricao">${secao.descricao}</p>` : ''}
+        <div class="secao-tabela-extra">
+            <h3>${secao.titulo || 'Tabela de Características'}</h3>
+            ${secao.descricao ? `<p class="tabela-extra-descricao">${secao.descricao}</p>` : ''}
+            
             <div class="tabela-container">
-                <table class="tabela-niveis">
+                <table class="tabela-infusoes">
                     <thead>
                         <tr>
                             ${colunas.map(coluna => `<th>${coluna}</th>`).join('')}
@@ -244,26 +314,127 @@ function gerarSecaoTabelaNiveis(secao) {
                         ${secao.linhas.map(linha => `
                             <tr>
                                 ${colunas.map(coluna => {
-                                    // Tenta várias formas de encontrar a chave
-                                    const chaveSimples = coluna.toLowerCase().replace(/[^a-z0-9]/g, '');
-                                    const chaveSemAcentos = coluna.toLowerCase()
-                                        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove acentos
-                                        .replace(/[^a-z0-9]/g, '');
-                                    
-                                    // Tenta encontrar o valor em várias chaves possíveis
-                                    let valor = '-';
-                                    if (linha[chaveSimples]) valor = linha[chaveSimples];
-                                    else if (linha[chaveSemAcentos]) valor = linha[chaveSemAcentos];
-                                    else if (linha[coluna.toLowerCase()]) valor = linha[coluna.toLowerCase()];
-                                    else if (linha[coluna]) valor = linha[coluna];
-                                    
-                                    return `<td>${valor}</td>`;
+                                    const chave = coluna.toLowerCase().replace(/[^a-z0-9]/g, '');
+                                    const valor = linha[chave] || linha[coluna] || '-';
+                                    const classeEspecial = chave.includes('nivel') ? 'nivel-poder' : '';
+                                    return `<td class="${classeEspecial}">${valor}</td>`;
                                 }).join('')}
                             </tr>
                         `).join('')}
                     </tbody>
                 </table>
             </div>
+            
+            ${secao.detalhes && Array.isArray(secao.detalhes) ? `
+                <div class="detalhes-infusoes">
+                    <h4>Detalhes das Infusões</h4>
+                    ${secao.detalhes.map(detalhe => `
+                        <div class="infusao-item" id="${detalhe.id}">
+                            <div class="infusao-cabecalho">
+                                <h5 class="infusao-titulo">${detalhe.titulo}</h5>
+                                ${detalhe.requisito ? `<p class="infusao-requisito">${detalhe.requisito}</p>` : ''}
+                            </div>
+                            <div class="infusao-descricao">
+                                ${detalhe.descricao}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            ` : ''}
+        </div>
+    `;
+}
+
+// Adicione esta nova função para gerar tabelas extras - VERSÃO CORRIGIDA
+function gerarSecaoTabelaExtra(secao) {
+    if (!secao.linhas || !Array.isArray(secao.linhas)) {
+        return `<div class="erro-secao">
+                    <p>Tabela extra não definida corretamente.</p>
+                </div>`;
+    }
+    
+    const colunas = secao.colunas || ['Categoria', 'Detalhes'];
+    
+    // DEBUG - Adicione para ver o que está acontecendo
+    console.log('=== DEBUG TABELA EXTRA ===');
+    console.log('Colunas:', colunas);
+    console.log('Linhas:', secao.linhas);
+    console.log('Primeira linha chaves:', Object.keys(secao.linhas[0]));
+    
+    return `
+        <div class="secao-tabela-extra">
+            <h3>${secao.titulo || 'Tabela de Características'}</h3>
+            ${secao.descricao ? `<p class="tabela-extra-descricao">${secao.descricao}</p>` : ''}
+            
+            <div class="tabela-container">
+                <table class="tabela-infusoes">
+                    <thead>
+                        <tr>
+                            ${colunas.map(coluna => `<th>${coluna}</th>`).join('')}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${secao.linhas.map(linha => `
+                            <tr>
+                                ${colunas.map(coluna => {
+                                    // Converte o nome da coluna para chave (minúsculo, sem espaços e acentos)
+                                    const chaveNormalizada = coluna.toLowerCase()
+                                        .normalize('NFD').replace(/[\u0300-\u036f]/g, '') // Remove acentos
+                                        .replace(/[^a-z0-9]/g, ''); // Remove caracteres especiais
+                                    
+                                    console.log(`Procurando chave: "${chaveNormalizada}" em:`, Object.keys(linha)); // DEBUG
+                                    
+                                    // Tenta várias formas de encontrar o valor
+                                    let valor = '-';
+                                    
+                                    // 1. Tenta pela chave normalizada
+                                    if (linha[chaveNormalizada] !== undefined) {
+                                        valor = linha[chaveNormalizada];
+                                    }
+                                    // 2. Tenta pelas chaves existentes no objeto
+                                    else {
+                                        const chavesExistentes = Object.keys(linha);
+                                        for (let chave of chavesExistentes) {
+                                            const chaveExistenteNormalizada = chave.toLowerCase()
+                                                .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                                                .replace(/[^a-z0-9]/g, '');
+                                            if (chaveExistenteNormalizada === chaveNormalizada) {
+                                                valor = linha[chave];
+                                                break;
+                                            }
+                                        }
+                                    }
+                                    
+                                    // 3. Se ainda não encontrou, tenta pelo nome original da coluna
+                                    if (valor === '-' && linha[coluna] !== undefined) {
+                                        valor = linha[coluna];
+                                    }
+                                    
+                                    const classeEspecial = chaveNormalizada.includes('nivel') ? 'nivel-poder' : '';
+                                    return `<td class="${classeEspecial}">${valor}</td>`;
+                                }).join('')}
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+            
+            ${secao.detalhes && Array.isArray(secao.detalhes) ? `
+                <div class="detalhes-infusoes">
+                    <h4>Detalhes das Infusões</h4>
+                    ${secao.detalhes.map(detalhe => `
+                        <div class="infusao-item" id="${detalhe.id}">
+                            <div class="infusao-cabecalho">
+                                <h5 class="infusao-titulo">${detalhe.titulo}</h5>
+                                ${detalhe.requisito ? `<p class="infusao-requisito">${detalhe.requisito}</p>` : ''}
+                            </div>
+                            <div class="infusao-descricao">
+                                ${detalhe.descricao}
+                            </div>
+                        </div>
+                    `).join('')}
+                </div>
+            ` : ''}
         </div>
     `;
 }
@@ -348,3 +519,4 @@ document.addEventListener('DOMContentLoaded', function() {
     carregarListaClasses();
     configurarTeclaEscClasses();
 });
+
