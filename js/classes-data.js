@@ -723,7 +723,7 @@ const classesData = [
             }
         ]
     },
-// Engenheiro Ki-Tech
+// Engenheiro Ki-Tech ID 3
     {
         id: 3,
         nome: "Engenheiro Ki-Tech",
@@ -990,7 +990,7 @@ const classesData = [
                     {
                         nivel: 4,
                         titulo: "Incremento de Habilidade",
-                        descricao: `Você ganha o talento Incremento de Habilidade (veja a página Y) ou outro talento de sua escolha para o qual você se qualifica. Você ganha essa 
+                        descricao: `Você ganha o talento Incremento de Habilidade (veja a página Talentos) ou outro talento de sua escolha para o qual você se qualifica. Você ganha essa 
                         característica novamente nos níveis 8, 12, 16 e 19.`
                     },
                     {
@@ -1325,7 +1325,380 @@ const classesData = [
                 ]
             }
         ]
-    }
+    },
+// Guardião ID 4
+    {
+        id: 4,
+        nome: "Guardião",
+        imagemCard: "images/cards/Temporario.jpg",
+        imagemVertical: "images/classes/Guardiao.jpg",
+        descricaoCurta: "Descrição curta da classe",
+        arte: "Ksenia Kiseleva",
+        paginaartista: "https://www.artstation.com/faavesa",
+        tituloDeSubclasse: "Domínio Ordenado",
+        descricaoSubclasse: `Escolha o Domínio que melhor represente suas habilidades, filosofia e treino do seu Guardião: O Domínio do Corpo e o Domínio dos Segredos.`,
+        secoes: [
+            {
+                tipo: "descricao",
+                conteudo: [
+                    `“Desde os primórdios do mundo, quando as sombras eram mais profundas e os perigos, incontáveis, ergueu-se uma sentinela silenciosa. São os Guardiões, protetores jurados 
+                    do equilíbrio, cuja linhagem se perde na névoa do tempo. Armados com sabedoria arcana ancestral e uma coragem inabalável, eles são a barreira entre a civilização e as 
+                    ameaças que buscam corromper a fundação da realidade. Suas intervenções são raras, mas tão decisivas que se tornam lendas que ecoam por eras.”`
+                ],
+                descricaoObjetiva: [
+                    `Os Guardiões são membros de uma ordem milenar dedicada à preservação da paz e ao combate de ameaças existenciais. São mestres das artes arcanas e guerreiros disciplinados, 
+                    treinados para enfrentar perigos que outros considerariam impossíveis. Seu conhecimento é acumulado e passado através de gerações, concedendo-lhes acesso a técnicas de 
+                    combate, rituais poderosos e artefatos antigos. Apesar de sua história estar entrelaçada com feitos heroicos que muitas vezes são confundidos com mitos, os Guardiões 
+                    permanecem vigilantes nos bastidores, agindo com precisão quando a estabilidade do mundo está em jogo. Sua presença é discreta, mas seu impacto é eterno.`
+                ]
+            },
+            {
+                tipo: "tracosPrincipais",
+                titulo: "Principais Traços de classe",
+                tracos: {
+                    "Habilidade Primária": `Sabedoria`,
+                    "Dados de Vida": "d8 por nível de Guardião",
+                    "Proficiência de Salvaguarda": `Sabedoria e Carisma`,
+                    "Proficiência em Habilidades": `Escolha 2: Percepção, Medicina, História, Arcanismo, Intuição, Natureza, Sobrevivência e Religião`,
+                    "Proficiência com Armas": `Armas Simples`,
+                    "Proficiência com Armaduras": `Armadura Leve e Escudos`,
+                    "Proficiência com Ferramentas": `Kit de Herbalista`,
+                    "Equipamento Inicial": `Escolha A ou B: (A) Uma arma simples, um escudo, uma armadura de couro, um tomo da Ordem, um kit de padre ou um kit de explorador e 10 GP; ou (B) 50 GP`
+                }
+            },
+            {
+                tipo: "tabelaNiveis",
+                titulo: "Características do classe",
+                descricao: "Como um classe, você ganha as seguintes características de classe quando atinge os níveis específicos.",
+                colunas: ["Nível", "Bônus de<br>Proficiência", "Características", "Pontos de Vita", "Truques<br>Conhecidos", "Slots de Magia<br>1° 2° 3° 4° 5° 6° 7° 8° 9°"],
+                linhas: [
+                    { 
+                        nivel: 1, 
+                        bonusdebrproficiencia: "+2", 
+                        caracteristicas: `Conjuração, Domínio Ordenado`,
+                        pontosdevita: 1, 
+                        truquesbrconhecidos: 3, 
+                        slotsdemagiabr123456789: "2 - - - - - - - -" 
+                    },{ 
+                        nivel: 2, 
+                        bonusdebrproficiencia: "+2", 
+                        caracteristicas: `Ler Ki, Traço de Domínio`, 
+                        pontosdevita: 3, 
+                        truquesbrconhecidos: 3, 
+                        slotsdemagiabr123456789: "3 - - - - - - - -" 
+                    },{ 
+                        nivel: 3, 
+                        bonusdebrproficiencia: "+2", 
+                        caracteristicas: ``,
+                        pontosdevita: 3,  
+                        truquesbrconhecidos: 4, 
+                        slotsdemagiabr123456789: "4 2 - - - - - - -" 
+                    },{ 
+                        nivel: 4, 
+                        bonusdebrproficiencia: "+2", 
+                        caracteristicas: `Incremento de Habilidade`,
+                        pontosdevita: 4,  
+                        truquesbrconhecidos: 4, 
+                        slotsdemagiabr123456789: "4 3 2 - - - - - -" 
+                    },{ 
+                        nivel: 5, 
+                        bonusdebrproficiencia: "+3", 
+                        caracteristicas: `Ordenar Caos`, 
+                        pontosdevita: 5, 
+                        truquesbrconhecidos: 5, 
+                        slotsdemagiabr123456789: "4 3 3 - - - - - -" 
+                    },{ 
+                        nivel: 6, 
+                        bonusdebrproficiencia: "+3", 
+                        caracteristicas: `Barreira Harmoniosa, Traço de Domínio`, 
+                        pontosdevita: 5, 
+                        truquesbrconhecidos: 6, 
+                        slotsdemagiabr123456789: "4 3 3 - - - - - -" 
+                    },{ 
+                        nivel: 7, 
+                        bonusdebrproficiencia: "+3", 
+                        caracteristicas: ``, 
+                        pontosdevita: 6, 
+                        truquesbrconhecidos: 6, 
+                        slotsdemagiabr123456789: "4 3 3 1 - - - - -" 
+                    },{ 
+                        nivel: 8, 
+                        bonusdebrproficiencia: "+3", 
+                        caracteristicas: `Incremento de Habilidade, Traço de Domínio`, 
+                        pontosdevita: 6,
+                        truquesbrconhecidos: 6, 
+                        slotsdemagiabr123456789: "4 3 3 2 - - - - -" 
+                    },{ 
+                        nivel: 9, 
+                        bonusdebrproficiencia: "+4", 
+                        caracteristicas: ``, 
+                        pontosdevita: 6,
+                        truquesbrconhecidos: 6, 
+                        slotsdemagiabr123456789: "4 3 3 3 1 - - - -" 
+                    },{ 
+                        nivel: 10, 
+                        bonusdebrproficiencia: "+4", 
+                        caracteristicas: `Manifestação de Ordo`, 
+                        pontosdevita: 7,
+                        truquesbrconhecidos: 6, 
+                        slotsdemagiabr123456789: "4 3 3 3 2 - - - -" 
+                    },{ 
+                        nivel: 11, 
+                        bonusdebrproficiencia: "+4", 
+                        caracteristicas: `Ordenar Caos Avançado`, 
+                        pontosdevita: 7,
+                        truquesbrconhecidos: 6, 
+                        slotsdemagiabr123456789: "4 3 3 3 2 1 - - -" 
+                    },{ 
+                        nivel: 12, 
+                        bonusdebrproficiencia: "+4", 
+                        caracteristicas: `Incremento de Habilidade`, 
+                        pontosdevita: 8,
+                        truquesbrconhecidos: 7, 
+                        slotsdemagiabr123456789: "4 3 3 3 2 1 - - -" 
+                    },{ 
+                        nivel: 13, 
+                        bonusdebrproficiencia: "+5", 
+                        caracteristicas: ``, 
+                        pontosdevita: 8,
+                        truquesbrconhecidos: 7, 
+                        slotsdemagiabr123456789: "4 3 3 3 2 1 1 - -" 
+                    },{ 
+                        nivel: 14, 
+                        bonusdebrproficiencia: "+5", 
+                        caracteristicas: `Conhecimento Eterno`, 
+                        pontosdevita: 9,
+                        truquesbrconhecidos: 8, 
+                        slotsdemagiabr123456789: "4 3 3 3 2 1 1 - -" 
+                    },{ 
+                        nivel: 15, 
+                        bonusdebrproficiencia: "+5", 
+                        caracteristicas: ``, 
+                        pontosdevita: 9,
+                        truquesbrconhecidos: 9, 
+                        slotsdemagiabr123456789: "4 3 3 3 2 1 1 1 -" 
+                    },{ 
+                        nivel: 16, 
+                        bonusdebrproficiencia: "+5", 
+                        caracteristicas: `Incremento de Habilidade`, 
+                        pontosdevita: 9,
+                        truquesbrconhecidos: 10, 
+                        slotsdemagiabr123456789: "4 3 3 3 3 1 1 1 -" 
+                    },{ 
+                        nivel: 17, 
+                        bonusdebrproficiencia: "+6", 
+                        caracteristicas: `Traço de Domínio`, 
+                        pontosdevita: 10,
+                        truquesbrconhecidos: 10, 
+                        slotsdemagiabr123456789: "4 3 3 3 3 1 1 1 1" 
+                    },{ 
+                        nivel: 18, 
+                        bonusdebrproficiencia: "+6", 
+                        caracteristicas: `Manifestação Divina`, 
+                        pontosdevita: 10,
+                        truquesbrconhecidos: 10, 
+                        slotsdemagiabr123456789: "4 3 3 3 3 1 1 1 1" 
+                    },{ 
+                        nivel: 19, 
+                        bonusdebrproficiencia: "+6", 
+                        caracteristicas: `Incremento de Habilidade`, 
+                        pontosdevita: 10,
+                        truquesbrconhecidos: 10, 
+                        slotsdemagiabr123456789: "4 3 3 3 3 2 1 1 1" 
+                    },{ 
+                        nivel: 20, 
+                        bonusdebrproficiencia: "+6", 
+                        caracteristicas: `Ordenar Caos Perfeito`, 
+                        pontosdevita: 12,
+                        truquesbrconhecidos: 10, 
+                        slotsdemagiabr123456789: "4 3 3 3 3 2 2 1 1" 
+                    },
+                ]
+            },
+            {
+                tipo: "caracteristicasDetalhadas",
+                titulo: "Características Detalhadas",
+                caracteristicas: [
+                    {
+                        nivel: 1,
+                        titulo: "Conjuração",
+                        descricao: `Você consegue arcanizar elementos naturais do ambiente alinhando suas energias a bel prazer. Essa manipulação é feita em forma de magias.
+                        <br><b>Truques (Magias de Nível 0).</b> No primeiro nível você conhece três truques da lista de magias de Clérigo.
+                        <br><b>Preparando e Conjurando Magias.</b> No primeiro nível e também nos seguintes, você conhece um número de magias da lista de magias de clérigo igual ao seu nível 
+                        de guardião + seu bônus de sabedoria.
+                        <br><b>Habilidade de Conjuração.</b> Sabedoria é sua habilidade de conjuração para suas magias; sua compreensão da teoria por trás da magia permite que você manipule 
+                        essas magias com habilidade superior. Você usa sua Sabedoria sempre que uma magias e referir à sua habilidade de conjuração. Além disso, você utiliza seu modificador 
+                        de Sabedoria ao definir a CD de resistência para uma magia que você conjura e ao fazer uma rolagem de ataque com ela.
+                        <br><b>Conjuração de Ritual.</b> Você pode conjurar magias como ritual se elas tiverem a tag indicando a possibilidade.
+                        <br><br><b>Salvaguarda de Magia = 10 + seu modificador de Sabedoria + seu bônus de proficiência</b>
+                        <br><b>Modificador de Ataque Mágico = seu modificador de Sabedoria + seu bônus de proficiência</b>`
+                    },
+                    {
+                        nivel: 1,
+                        titulo: "Domínio Ordenado",
+                        descricao: `Os Guardiões devem escolher um “Domínio Ordenado”. Esse domínio permite que eles acessem recursos exclusivos e habilidades relacionadas a um dos diversos 
+                        domínios da Ordem dos Guardiões. Essa escolha define a especialização do Guardião, conferindo-lhes vantagens específicas de acordo com o domínio selecionado.`
+                    },
+                    {
+                        nivel: 2,
+                        titulo: "Ler Espírito",
+                        descricao: `Você pode gastar uma ação bônus para se concentrar em uma criatura que você possa ver e esteja em até 60 ft e determinar se ele é capaz de controlar a 
+                        própria energia espiritual. O alvo deve ser bem sucedido em um teste de resistência de sabedoria (o alvo pode escolher falhar) com a CD dos seus recursos de vita. 
+                        Caso o alvo falhe, você pode determinar quantos pontos de vita ele tem restantes.
+                        <br>Em adição, a partir do 3° nível, você pode gastar 1 a 3 pontos de vita. Após fazer isso, você detecta a presença de criaturas em um raio de 60 pés multiplicado 
+                        pelo número de pontos de vida gastos. Você sabe a quantidade de criaturas na área e se alguma delas é poderosa. Essa habilidade não revela a localização exata das 
+                        criaturas, apenas sua direção geral.` 
+                    },
+                    {
+                        nivel: 4,
+                        titulo: "Incremento de Habilidade",
+                        descricao: `Você ganha o talento Incremento de Habilidade (veja a página Talentos) ou outro talento de sua escolha para o qual você se qualifica. Você ganha essa 
+                        característica novamente nos níveis 8, 12, 16 e 19.`
+                    },
+                    {
+                        nivel: 5,
+                        titulo: "Ordenar Caos",
+                        descricao: `Você dominou a habilidade de controlar e canalizar a energia caótica ao seu redor, trazendo ordem e estabilidade para o caos. Quando você usa a habilidade 
+                        “Ordenar o Caos”, você é capaz de gastar 2 pontos de ki para direcionar o fluxo de energia caótica em uma área específica e restaurar o equilíbrio.
+                        <br>Ao ativar “Ordenar o Caos”, você cria uma zona de estabilidade ao seu redor, com um raio de 30 pés. Durante a duração da habilidade, que dura 1 minuto, os efeitos 
+                        caóticos e imprevisíveis são suprimidos nessa área. Isso significa que testes de resistência contra efeitos que causem desvantagem a aliados ou vantagem a oponentes são 
+                        rolados em vantagem ou desvantagem respectivamente.
+                        <br>Além disso, aliados dentro da área da habilidade recebem um bônus de 1d4 em todos os testes de resistência e podem rolar novamente caso uma rolagem de d20 resulte 
+                        em 5 ou menos.`
+                    },
+                    {
+                        nivel: 6,
+                        titulo: "Barreira Harmoniosa",
+                        descricao: `Você é capaz de conjurar um escudo etéreo de energia harmoniosa para proteção. com o custo de 3 pontos de ki, você pode criar um escudo em um aliado que 
+                        concede mais 2 pontos de ca e resistência a um tipo de dano à sua escolha por 1 minuto. O escudo também proporciona imunidade a condições negativas relacionadas à 
+                        energia correspondente ao tipo de dano escolhido. Você pode utilizar esse traço um número de vezes igual ao seu bônus de proficiência. Se esse traço estiver ativo e 
+                        você utiliza-lo novamente, o aliado beneficiado anteriormente perde o efeito. Você recarrega os usos ao fim de um descanso longo.`
+                    },
+                    {
+                        nivel: 10,
+                        titulo: "Manifestação de Ordo",
+                        descricao: `Sua ligação com o plano da ordem te permite manipular as probabilidades. Se você rolar um 1 em um d20, você pode refazer a jogada como uma reação e ficar 
+                        com o novo resultado. Se a nova jogada resultar em um sucesso, você pode conceder vantagem à um aliado em até 30 ft de distância em sua próxima jogada de ataque ou 
+                        perícia.`
+                    },
+                    {
+                        nivel: 11,
+                        titulo: "Ordenar Caos Avançado",
+                        descricao: `Ao utilizar o Ordenar Caos,o alcance da sua zona de estabilidade aumenta para 40 ft. Além disso, criaturas do tipo morto-vivo, fiend, ou aberração têm 
+                        desvantagem em ataques contra você e não podem direcionar magias ou efeitos mágicos de alcance toque ou uma criatura no alcance contra você enquanto a aura estiver 
+                        ativa.`
+                    },
+                    {
+                        nivel: 14,
+                        titulo: "Conhecimento Eterno",
+                        descricao: `Você ganha acesso aos segredos da Ordem dos Guardiões. Ao realizar um descanso curto, você repara metade do máximo de espaços de magia de cada nível que 
+                        tiver disponível, arredondado para baixo (mín. 0). Além disso, você pode escolher uma magia de nível 3 ou menos para conjurar sem utilizar espaços de magia.`
+                    },
+                    {
+                        nivel: 18,
+                        titulo: "Manifestação Divina",
+                        descricao: `Você estabelece uma conexão intensa e rápida com sua divindade. Como uma ação, você pode escolher até 5 aliados que estejam até 40 ft de você. Some os 
+                        pontos de vida de todas as criaturas e divida pelo número de criaturas afetadas. Se uma criatura atingir o máximo de pontos de vida com esse efeito, você pode 
+                        redirecionar os pontos de vida que ultrapassem o máximo para outro aliado afetado. Imediatamente depois, como uma ação bônus, você pode curar uma criatura afetada em 
+                        4d8+ seu bônus de Sabedoria.`
+                    },
+                    {
+                        nivel: 20,
+                        titulo: "Ordenar Caos Perfeito",
+                        descricao: `No 20° nível você sempre está com o traço Ordenar Caos ativo.`
+                    }
+                ]
+            }
+        ],
+        subclasses: [
+            {
+                id: 1,
+                nome: "Domínio do Corpo",
+                descricao: `O “Domínio do Corpo” é um setor especializado da Ordem dos Guardiões que se dedica ao aprimoramento e regeneração do corpo físico. Seus membros são especialistas 
+                em técnicas de cura, resistência e fortalecimento corporal. Eles dominam poderosas habilidades de regeneração, aumentando sua durabilidade e capacidade de suportar ferimentos 
+                graves. Além disso, são capazes de fortalecer seus ataques físicos e se adaptar a diferentes situações de combate. O Domínio do Corpo valoriza a disciplina física e a maestria 
+                sobre o corpo.`,
+                caracteristicas: [
+                    {
+                        nivel: 1,
+                        titulo: "Toque Curativo",
+                        descricao: `Os guardiões do Domínio do Corpo possuem um talento inato para a cura. Eles são capazes de canalizar energia vital através de suas mãos, permitindo-lhes
+                        realizar toques curativos que aceleram a regeneração de tecidos danificados. Mesmo no nível mais básico, eles podem proporcionar alívio e cura para pequenos ferimentos 
+                        e lesões. Com o custo de 1 ponto de ki, você pode conjurar a magia “curar ferimentos”, adicionando o seu bônus de proficiência na cura. Você pode gastar pontos de ki 
+                        adicionais para conjurar a magia em níveis superiores.`
+                    },
+                    {
+                        nivel: 2,
+                        titulo: "Forma Implacável",
+                        descricao: `Os guardiões do Domínio do Corpo desenvolvem uma habilidade excepcional em resistir a danos físicos, permitindo-lhes suportar ferimentos mais graves e 
+                        prolongar sua capacidade de luta. Você tem vantagem em testes de resistência contra a morte e ganha resistência a um tipo de dano a sua escolha. Você pode alterar o 
+                        tipo de dano ao qual é resistente se passar 1 hora em meditação com esse foco.`
+                    }
+                    ,
+                    {
+                        nivel: 6,
+                        titulo: "Toque Curativo Aprimorado",
+                        descricao: `Sua habilidade de curar com o ki chega a níveis impressionantes. Quando utilizar o Toque Curativo, você pode se mover até 10 ft como uma reação e utilizar o 
+                        traço em uma criatura adicional. Você não gasta pontos de ki para utilizar o traço dessa forma e o movimento é descontado da sua velocidade.`
+                    }
+                    ,
+                    {
+                        nivel: 8,
+                        titulo: "Mãos Divinas",
+                        descricao: `Você pode manipular as probabilidades da arcanização de sua cura. Sempre que rolar um 1 em um dado de cura quando utilizando o traço Toque Curativo, você 
+                        pode rolar novamente e ficar com o novo resultado.`
+                    }
+                    ,
+                    {
+                        nivel: 17,
+                        titulo: "Agente Celeste",
+                        descricao: `Suas habilidades de cura se tornam imparáveis. Você conjura curar ferimentos com dois níveis de espaço de magia por ponto de ki gasto e tem a cura 
+                        maximizada se você for um dos alvos. Além disso, o traço de Mãos Divinas vale para qualquer magia de cura que você conjure.`
+                    }
+                ]
+            },
+            {
+                id: 2,
+                nome: "Domínio dos Segredos",
+                descricao: `Guardiões do domínio dos segredos são treinados em técnicas de investigação e obtenção de conhecimento que por algum motivo seja mantido oculto. O serviço desse 
+                domínio é essencial para que a Ordem possa ter uma noção mais próxima a realidade dos problemas de Tholus.`,
+                caracteristicas: [
+                    {
+                        nivel: 1,
+                        titulo: "Espirito Enganador",
+                        descricao: `Você aprende o truque ilusão menor. Esse truque não conta no seu máximo de truques conhecidos. Além disso, você pode gastar 1 ponto de ki para obter 
+                        vantagem em testes de percepção ou investigação, os quais você utiliza o modificador de sabedoria.`
+                    },
+                    {
+                        nivel: 2,
+                        titulo: "Tráfico de Influência",
+                        descricao: `Você tem vantagem em testes de persuasão para obter informações e utiliza o seu modificador de sabedoria nessas jogadas ao invés do de carisma. Além disso, 
+                        você pode gastar 1 ponto de ki para se concentrar por 10 minutos e determinar se aconteceram eventos significativos de natureza política, violenta ou histórica em uma 
+                        área de 100 ft ao redor de você.`
+                    },
+                    {
+                        nivel: 6,
+                        titulo: " Engano Arcano",
+                        descricao: `Seu uso do Espírito Enganador é aprimorado. Testes de investigação para determinar se suas ilusões são reais são feitos em desvantagem. Além disso, você 
+                        aprende a magia ilusão maior e pode conjura-la com 3 pontos de ki. Essa magia não conta no seu máximo de magias conhecidas.`
+                    },
+                    {
+                        nivel: 8,
+                        titulo: "Ilusão Materializada",
+                        descricao: `Suas ilusões são tão reais que geram efeitos hipnóticos em quem as observa. Suas ilusões passam inspeção física mesmo que seja dito no texto da magia que não.`
+                    },
+                    {
+                        nivel: 17,
+                        titulo: "Domínio Ilusório",
+                        descricao: `Você aprende a magia miragem arcana e pode conjurar ela uma vez por descanso longo sem gastar slotes de magia. Essa magia não conta no seu máximo de magias 
+                        conhecidas.`
+                    },
+                ]
+            }
+        ]
+    },
+
+
 
 /* 
     // Exemplo de classe
@@ -1338,7 +1711,7 @@ const classesData = [
         arte: "Nome do Artista",
         paginaartista: "https://exemplo.com/artista",
         tituloDeSubclasse: "Título das Subclasses",
-
+        descricaoSubclasse: ``,
         secoes: [
             {
                 tipo: "descricao",
@@ -1408,16 +1781,16 @@ const classesData = [
             {
                 id: 1,
                 nome: "Nome da Subclasse",
-                descricao: "Descrição da subclasse",
+                descricao: `Descrição da subclasse`,
                 caracteristicas: [
                     {
                         nivel: 3,
                         titulo: "Característica de Nível 3",
-                        descricao: "Descrição detalhada da característica de nível 3."
+                        descricao: `Descrição detalhada da característica de nível 3.`
                     }
                 ]
             }
         ]
-    }
+    },
 */
 ];

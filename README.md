@@ -6,8 +6,13 @@ Uma aplicação web para organizar e exibir conteúdo homebrew de Dungeons & Dra
 
 ## 📋 Changelog
 
-### Versão 0.7.4 (Atual)
-- **Data:**04/10/2025
+### Versão 0.7.5 (Atual)
+- **Data:**07/10/2025
+- **Melhorias:**
+  - Adição completa dos Guardiões.
+
+### Versão 0.7.4
+- **Data:**07/10/2025
 - **Melhorias:**
   - Adição completa dos Ceifadores e Engenheiros Ki-Tech.
   - Adição de suporte para fichas de criaturas nas características das classes.

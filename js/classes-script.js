@@ -112,6 +112,54 @@ function gerarConteudoModular(classe) {
         </div>
     `;
     
+    function gerarSecaoTabelaNiveis(secao) {
+    if (!secao.linhas || !Array.isArray(secao.linhas)) {
+        return `<div class="erro-secao">
+                    <p>Tabela de níveis não definida corretamente.</p>
+                </div>`;
+    }
+    
+    const colunas = secao.colunas || ['Nível', 'Características'];
+    
+    return `
+        <div class="secao-tabela-niveis">
+            <h3>${secao.titulo || 'Progressão da Classe'}</h3>
+            ${secao.descricao ? `<p class="tabela-descricao">${secao.descricao}</p>` : ''}
+            <div class="tabela-container">
+                <table class="tabela-niveis">
+                    <thead>
+                        <tr>
+                            ${colunas.map(coluna => `<th>${coluna}</th>`).join('')}
+                        </tr>
+                    </thead>
+                    <tbody>
+                        ${secao.linhas.map(linha => `
+                            <tr>
+                                ${colunas.map(coluna => {
+                                    // Tenta várias formas de encontrar a chave
+                                    const chaveSimples = coluna.toLowerCase().replace(/[^a-z0-9]/g, '');
+                                    const chaveSemAcentos = coluna.toLowerCase()
+                                        .normalize('NFD').replace(/[\u0300-\u036f]/g, '')
+                                        .replace(/[^a-z0-9]/g, '');
+                                    
+                                    // Tenta encontrar o valor em várias chaves possíveis
+                                    let valor = '-';
+                                    if (linha[chaveSimples]) valor = linha[chaveSimples];
+                                    else if (linha[chaveSemAcentos]) valor = linha[chaveSemAcentos];
+                                    else if (linha[coluna.toLowerCase()]) valor = linha[coluna.toLowerCase()];
+                                    else if (linha[coluna]) valor = linha[coluna];
+                                    
+                                    return `<td>${valor}</td>`;
+                                }).join('')}
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    `;
+}
+
     // Adiciona as outras seções abaixo do layout principal
     const outrasSecoes = classe.secoes.filter(s => s.tipo !== 'descricao' && s.tipo !== 'tracosPrincipais');
     
